@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 记录与分享
 subtitle:
 description:
 keywords:
-author: John Doe
-language:
+author: dongtshj
+language: zh-Hans
 timezone:
 
 # URL

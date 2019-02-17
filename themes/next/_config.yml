@@ -519,7 +519,7 @@ pangu: false
 
 # Disqus
 disqus:
-  enable: true
+  enable: false
   shortname: dongtshj
   count: false
   lazyload: false

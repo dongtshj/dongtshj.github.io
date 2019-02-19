@@ -180,12 +180,12 @@ social:
   E-Mail: mailto:dongtshj@gmail.com || envelope
   #Weibo: https://weibo.com/yourname || weibo
   #Google: https://plus.google.com/yourname || google
-  Twitter: https://twitter.com/dongtshj || twitter
-  FB Page: https://www.facebook.com/dongtshj || facebook
+  #Twitter: https://twitter.com/dongtshj || twitter
+  #FB Page: https://www.facebook.com/dongtshj || facebook
   #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
   #YouTube: https://youtube.com/yourname || youtube
-  Instagram: https://instagram.com/dongtshj || instagram
+  #Instagram: https://instagram.com/dongtshj || instagram
   #Skype: skype:yourname?call|chat || skype
 
 social_icons:
@@ -680,7 +680,7 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: true
+  enable: false
   app_id: h4YXbjCoaEh23w9Yk7FPdbUX-gzGzoHsz
   app_key: qpgKoLXwRKoRizQfQRzU2A5V
   Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
@@ -707,7 +707,7 @@ busuanzi_count:
   total_visitors_icon: user
   total_views: true
   total_views_icon: eye
-  post_views: false
+  post_views: true
   post_views_icon: eye
 
 # Tencent analytics ID

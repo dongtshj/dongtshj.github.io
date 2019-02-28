@@ -1,8 +1,6 @@
 ---
 title: Linux常用命令
-tag: 
-- Linux
-- shell
+tag: Linux
 categories: 工作
 date: 2019-02-21
 ---

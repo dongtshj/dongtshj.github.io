@@ -28,5 +28,5 @@ date: 2019-03-01
 * 操作简直一模一样的：只是把选项“URL to merge from”处，改成选择你要合并到分支（branch）的那个主干（trunk）的路径
 
 ## 注意整个合并过程其实可以分解成：**diff + apply**这两个操作的组合
-* **diff**：既可以是指比较**同一个tree的不同版本之间的差异，也可以是比较两个tree之间的差异
+* **diff**：既可以是指比较同一个tree的不同版本之间的差异（“Merger a range of revisions”），也可以是比较两个tree之间的差异（“2-URL Merges”）
 * **apply**：就是把这些差异应用到那你想要的working copy上

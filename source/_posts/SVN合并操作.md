@@ -1,5 +1,5 @@
 ---
-title: SVN主干（trunk）与分支（branch）的合并操作（svn merge）
+title: SVN的合并操作（svn merge）
 tag: SVN
 categories: 工作
 date: 2019-03-01
@@ -15,7 +15,7 @@ date: 2019-03-01
 * 在弹出的“Merge type”界面里：选择“Merger a range of revisions”选项
 * 在弹出的“Merge revision range”界面里：
     * “URL to merge from”处，选择你想要合并到主干（trunk）的那个分支（branch）的路径
-    * “Revision range to merge”处，选择你想要合并的版本号 （这些都是对分支（trunk）的修改产生的版本号）
+    * “Revision range to merge”处，选择你想要合并的版本号 （这些都是对分支（branch）的修改产生的版本号）
     * 点击“下一步（Next）”按钮
 * 在“Merge options”界面里：
     * 使用默认的合并选项就可以了

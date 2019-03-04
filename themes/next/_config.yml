@@ -180,12 +180,12 @@ social:
   E-Mail: mailto:dongtshj@gmail.com || envelope
   #Weibo: https://weibo.com/yourname || weibo
   #Google: https://plus.google.com/yourname || google
-  #Twitter: https://twitter.com/dongtshj || twitter
-  #FB Page: https://www.facebook.com/dongtshj || facebook
+  Twitter: https://twitter.com/dongtshj || twitter
+  FB Page: https://www.facebook.com/dongtshj || facebook
   #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
   #YouTube: https://youtube.com/yourname || youtube
-  #Instagram: https://instagram.com/dongtshj || instagram
+  Instagram: https://instagram.com/dongtshj || instagram
   #Skype: skype:yourname?call|chat || skype
 
 social_icons:
@@ -206,7 +206,7 @@ links_title: Links
 links_layout: inline
 links:
   lioswong: https://lioswong.github.io
-  google&wiki mirror: https://kfd.me/
+  #google&wiki mirror: https://kfd.me/
   
 # Sidebar Avatar
 avatar:
@@ -619,7 +619,7 @@ needmoreshare2:
 #google_site_verification:
 
 # Google Analytics
-#google_analytics:
+google_analytics: UA-135514886-1
 
 # Bing Webmaster tools verification setting
 # See: https://www.bing.com/webmaster

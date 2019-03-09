@@ -13,9 +13,9 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://dongtshj.github.io
 root: /
-permalink: :title/
+permalink: :category/:title/
 permalink_defaults:
 
 # Directory
@@ -82,3 +82,6 @@ deploy:
   repo: git@github.com:dongtshj/dongtshj.github.io.git  # 这种配置需使用 SSH
   branch: master
   message: message  # 默认为 Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}
+
+sitemap: 
+    path: sitemap.xml

@@ -13,17 +13,16 @@ date: 2019-03-09
 * [, n]：中括号表示可选的参数n，替换n次；忽略则全部替换
 * 返回值：替换后的字符串和替换的次数
 
-`> string.gsub("dongtshj.github.io", ".", '')`
+```
+> string.gsub("dongtshj.github.io", ".", '')
+dongtshjgithubio 2
 
-`dongtshjgithubio 2`
+> string.gsub("dongtshj.github.io", ".", "", 1)
+dongtshjgithub.io 1
 
-`> string.gsub("dongtshj.github.io", ".", "", 1)`
-
-`dongtshjgithub.io 1`
-
-`> string.gsub("dongtshj.github.io", "k", "")`
-
-`dongtshj.github.io 0`
+> string.gsub("dongtshj.github.io", "k", "")
+dongtshj.github.io 0
+```
 
 ### 查找操作
 `string.find (s, pattern [, init [, plain]])`
@@ -32,10 +31,9 @@ date: 2019-03-09
 * [, init [, plain]]：可选参数，init表示搜索起始位置，默认为1
 * 返回值：如果找到一个匹配，则返回它在s中的起始位置；否则，返回nil
 
-`> string.find("dongtshj.github.io", "git")`
-
-`10 12`
-
-`> string.find("dongtshj.github.io", "kkk")`
-
-`nil`
+```
+> string.find("dongtshj.github.io", "git")
+10 12
+> string.find("dongtshj.github.io", "kkk")
+nil
+```

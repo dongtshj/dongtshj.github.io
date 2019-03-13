@@ -31,3 +31,17 @@ date: 2019-02-21
 `scp root@10.6.159.147:/opt/soft/demo.tar /opt/soft/`
 * 复制目录
 `scp -r root@10.6.159.147:/opt/soft/test /opt/soft/`
+
+### 移动/重命名文件
+`mv [options] SourceFile/SourceDirectory TargetFile/TargetDirectory`
+* 重命名文件
+`mv test.log test1.txt`
+* 移动当前目录下的所有文件或目录到上层目录
+`mv * ../`
+
+### 删除文件/文件夹命令
+`rm [options] file/directory`
+* 删除文件
+`rm testFile.txt`
+* 删除目录：-r表示递归删除，删除目录时必须要加上这个选项
+`rm -r testDirectory`

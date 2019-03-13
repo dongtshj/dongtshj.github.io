@@ -1,7 +1,7 @@
 ---
 title: SVN的合并操作（svn merge）
-tag: SVN
-categories: 工作
+tag: svn merge
+categories: SVN
 date: 2019-03-01
 ---
 

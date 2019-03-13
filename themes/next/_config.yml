@@ -116,7 +116,7 @@ creative_commons:
 canonical: true
 
 # Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.
-seo: false
+seo: true
 
 # If true, will add site-subtitle to index page, added in main hexo config.
 # subtitle: Subtitle
@@ -287,15 +287,15 @@ read_more_btn: true
 
 # Post meta display settings
 post_meta:
-  item_text: true
-  created_at: true
+  item_text: false
+  created_at: false
   updated_at:
-    enabled: true
+    enabled: false
     # If true, show updated date label only if `updated date` different from `created date` (post edited in another day than was created).
     # And if post will edited in same day as created, edited time will show in popup title under created time label.
     # If false show anyway, but if post edited in same day, show only edited time.
-    another_day: true
-  categories: true
+    another_day: false
+  categories: false
 
 # Post wordcount display settings
 # Dependencies: https://github.com/theme-next/hexo-symbols-count-time
@@ -707,7 +707,7 @@ busuanzi_count:
   total_visitors_icon: user
   total_views: true
   total_views_icon: eye
-  post_views: true
+  post_views: false
   post_views_icon: eye
 
 # Tencent analytics ID
@@ -816,7 +816,7 @@ reading_progress:
 
 # Use velocity to animate everything.
 motion:
-  enable: true
+  enable: false
   async: false
   transition:
     # Transition variants:

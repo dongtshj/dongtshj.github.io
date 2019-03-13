@@ -4,18 +4,18 @@
 
 # Site
 title: 记录&分享
-subtitle:
-description:
-keywords:
+subtitle: dongtshj的技术博客
+description: 记录一位软件开发者在实践中学习到的知识
+keywords: 游戏编程 软件工程 信息技术 程序设计
 author: dongtshj
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://dongtshj.github.io
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :category/:title/
 permalink_defaults:
 
 # Directory
@@ -82,3 +82,6 @@ deploy:
   repo: git@github.com:dongtshj/dongtshj.github.io.git  # 这种配置需使用 SSH
   branch: master
   message: message  # 默认为 Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}
+
+sitemap: 
+    path: sitemap.xml

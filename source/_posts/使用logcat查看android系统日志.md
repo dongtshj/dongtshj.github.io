@@ -28,3 +28,17 @@ date: 2019-03-13
 `adb logcat -v time`
 * 将日志重定向到一个文件中
 `adb logcat -v time > log.txt`
+
+### release_print而不是print
+我发现cocos2dx-lua里的print打印的日志，使用logcat竟然输出不了，换成release_print才行。
+
+### 使用adb把命令发往指定的设备
+开发的pc通过USB连接多台安卓设备或者pc上运行多个安卓模拟器时，执行
+
+`adb devices`
+
+命令查看，发现list of devices attached列表下有多台设备地址。这个时候直接执行像`adb logcat`是不行的，因为adb不知道你是要往哪台设备发送命令。所以需要加上参数指定哪台设备
+
+`adb -s 127.0.0.1:21503 logcat`
+
+才行

@@ -24,6 +24,7 @@ load("print(\"dongtshj.github.io\")")()
 loadfile("test.lua")
 > function: 00634ef8 （一个函数地址）
 
+
 loadfile("test.lua")()
 > dongtshj.github.io
 ```

@@ -10,6 +10,7 @@ date: 2019-03-16
 ```
 load("print(\"dongtshj.github.io\")")
 > function: 0109b970 （一个函数地址）
+
 load("print(\"dongtshj.github.io\")")()
 > dongtshj.github.io （表达式加上了()表示调用了函数）
 ```
@@ -17,13 +18,12 @@ load("print(\"dongtshj.github.io\")")()
 **和load类似，不过是从文件或标准输入中获取代码块**
 
 假设test.lua文件内容如下：
-```
-print("dongtshj.github.io")
-```
+`print("dongtshj.github.io")`
 那么有：
 ```
 loadfile("test.lua")
 > function: 00634ef8 （一个函数地址）
+
 loadfile("test.lua")()
 > dongtshj.github.io
 ```

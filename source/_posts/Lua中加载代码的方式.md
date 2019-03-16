@@ -1,6 +1,6 @@
 ---
 title: Lua中加载代码的方式
-#tag: 
+tag: lua 
 categories: Lua
 date: 2019-03-16
 ---

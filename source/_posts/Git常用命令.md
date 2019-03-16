@@ -1,6 +1,6 @@
 ---
 title: Git常用命令
-#tag: Git常用命令
+tag: git
 categories: Git
 date: 2019-03-13
 ---

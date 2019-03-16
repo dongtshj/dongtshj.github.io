@@ -9,7 +9,8 @@ date: 2019-03-01
 
 * 关于更详细的说明看这里的[中文文档](http://svnbook.red-bean.com/nightly/zh/svn.branchmerge.html)
 
-## 把分支（branch）合并到主干（trunk）
+### 把分支（branch）合并到主干（trunk）
+---
 * 首先到你的trunk根目录下（本地的working copy），更新服务器上最新代码，提交本地还未提交的代码，解决存在的冲突。
 * 鼠标空白处右键，选择"TortoiseSVN"选项，然后选择“Merge...”选项
 * 在弹出的“Merge type”界面里：选择“Merger a range of revisions”选项
@@ -24,9 +25,11 @@ date: 2019-03-01
     * 如何产生冲突了也不用担心，可以选择手动解决冲突或者撤销此次合并操作
     * 合并后记得提交合并后的结果
 
-## 把主干（trunk）合并到分支（branch）
+### 把主干（trunk）合并到分支（branch）
+---
 * 操作简直一模一样的：只是把选项“URL to merge from”处，改成选择你要合并到分支（branch）的那个主干（trunk）的路径
 
-## 注意整个合并过程其实可以分解成：**diff + apply**这两个操作的组合
+### 注意整个合并过程其实可以分解成：**diff + apply**这两个操作的组合
+---
 * **diff**：既可以是指比较同一个tree的不同版本之间的差异（“Merger a range of revisions”），也可以是比较两个tree之间的差异（“2-URL Merges”）
 * **apply**：就是把这些差异应用到那你想要的working copy上

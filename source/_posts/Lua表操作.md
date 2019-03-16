@@ -2,7 +2,7 @@
 title: Lua表操作
 tag: lua
 categories: Lua
-date: 2019-03-09
+date: 2019-03-17
 ---
 
 * Lua中的表即table，它是Lua提供的唯一一个复杂数据结构。

@@ -1,6 +1,6 @@
 ---
 title: Lua表操作
-tag: lua
+tag: Lua
 categories: Lua
 date: 2019-03-17
 ---
@@ -37,7 +37,7 @@ local table = {
 
 ### Table操作
 ---
-* table.insert(list, [pos,] value)
+* **table.insert(list, [pos,] value)**
 在list的pos处插入value，并后移list[pos],list[pos + 1],...,list[#list]。默认插入到list末尾
 ```
 local tab = {1, 2, 3}
@@ -45,7 +45,7 @@ table,insert(tab, 7)
 print(tab[4])
 > 7
 ```
-* table.remove(list [,pos])
+* **table.remove(list [,pos])**
 移除list中pos位置上的元素，并返回移除的值。默认移除最后一个元素
 ```
 local tab = {1, 2, 3, 7}

@@ -1,6 +1,6 @@
 ---
-title: Lua字符串操作
-tag: lua
+title: Lua字符串操
+tag: Lua
 categories: Lua
 date: 2019-03-09
 ---

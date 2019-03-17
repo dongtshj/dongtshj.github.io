@@ -79,7 +79,7 @@ print(table.concat(tab, ""))
 * **table.move(tab1, begin1, end1, begin2 [, tab2])**
 将tab1中的元素移到tab2中，等同于下面这个多重赋值操作：
 `tab2[begin2], ··· = tab1[begin1], ··· , tab1[end1]`
-其中tab2的默认值为tab1。
+其中tab2的默认值为tab1。*其实感觉move这个函数名不够好，move给人的感觉是，拷贝后会把自己的给删除了；或者就是把自己的元素给别人了，自己不再拥有这些元素的控制权了。其实这里就是个单纯的拷贝操作*
 ```
 local tab1 = {1, 2}
 local tab2 = {}
@@ -87,7 +87,6 @@ table.move(tab1, 1, 2, 1, tab2)
 # 现在tab1的内容：{1, 2}
 # 现在tab2的内容：{1, 2}
 ```
-其实感觉move这个函数名不够好，move给人的感觉是，拷贝后会把自己的给删除了；或者就是把自己的元素给别人了，自己不再拥有这些元素的控制权了。其实这里就是个单纯的拷贝操作
 
 * **table.pack(...)**
 构建新的table

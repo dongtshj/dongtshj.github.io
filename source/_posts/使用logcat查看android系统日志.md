@@ -1,6 +1,6 @@
 ---
 title: 使用logcat查看android系统日志
-tag: Debug
+tag: Debug1
 categories: Android
 date: 2019-03-13
 ---

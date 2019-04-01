@@ -1,6 +1,6 @@
 ---
 title: Lua中的Table常见操作
-tag: Lua1
+tag: Lua
 categories: Lua
 date: 2019-03-17
 ---

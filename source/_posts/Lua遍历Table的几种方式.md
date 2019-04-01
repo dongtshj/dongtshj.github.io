@@ -1,6 +1,6 @@
 ---
 title: Lua遍历Table的几种方式
-tag: Lua1
+tag: Lua
 categories: Lua
 date: 2019-03-17
 ---

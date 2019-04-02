@@ -1,6 +1,6 @@
 ---
 title: Linux常用命令
-tag: Shell1
+tag: Shell
 categories: Linux
 date: 2019-02-21
 ---

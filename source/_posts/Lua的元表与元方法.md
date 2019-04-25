@@ -1,6 +1,5 @@
 ---
 title: Lua的元表与元方法
-tag: Lua
 categories: Lua
 date: 2019-03-18
 ---

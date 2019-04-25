@@ -1,6 +1,5 @@
 ---
 title: OOP中的继承
-tag: 软件工程
 categories: OOP
 date: 2019-03-09
 ---

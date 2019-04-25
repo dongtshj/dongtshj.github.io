@@ -1,6 +1,5 @@
 ---
 title: ADB常用命令
-tag: Debug
 categories: Android
 date: 2019-04-24
 ---

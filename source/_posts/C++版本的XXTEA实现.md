@@ -205,6 +205,6 @@ unsigned char *xxtea_decrypt(unsigned char *data, xxtea_long data_len, unsigned 
 
 * 对比python版本，应该能看出来C++的实现写的挺复杂的
 * python这门语言的抽象能力要比C++高出很多，C++需要关注很多低层次（low level）的细节问题，python作为一门脚本语言则屏蔽了这些需要考虑的细节，极大的减轻了使用者**心智上的负担**
-* 正是因为上面的原因，C++的使用示例写起来也挺麻烦的，就没写了:)
+* 正是因为上面的原因，C++的使用示例写起来也挺麻烦的，也就没写了:)
 
 

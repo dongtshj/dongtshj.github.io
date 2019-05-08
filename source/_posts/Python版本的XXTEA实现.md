@@ -13,36 +13,6 @@ xxtea一种简单、执行快速的加密方式，通常很少的代码量就能
 
 xxtea.py
 ```
-############################################################  
-#                                                          #  
-# The implementation of PHPRPC Protocol 3.0                #  
-#                                                          #  
-# xxtea.py                                                 #  
-#                                                          #  
-# Release 3.0.0                                            #  
-# Copyright (c) 2005-2008 by Team-PHPRPC                   #  
-#                                                          #  
-# WebSite:  http://www.phprpc.org/                         #  
-#           http://www.phprpc.net/                         #  
-#           http://www.phprpc.com/                         #  
-#           http://sourceforge.net/projects/php-rpc/       #  
-#                                                          #  
-# Authors:  Ma Bingyao <andot@ujn.edu.cn>                  #  
-#                                                          #  
-# This file may be distributed and/or modified under the   #  
-# terms of the GNU Lesser General Public License (LGPL)    #  
-# version 3.0 as published by the Free Software Foundation #  
-# and appearing in the included file LICENSE.              #  
-#                                                          #  
-############################################################  
-#  
-# XXTEA encryption arithmetic library.  
-#  
-# Copyright (C) 2005-2008 Ma Bingyao <andot@ujn.edu.cn>  
-# Version: 1.0  
-# LastModified: Oct 5, 2008  
-# This library is free.  You can redistribute it and/or modify it.  
-  
 import struct  
   
 _DELTA = 0x9E3779B9  

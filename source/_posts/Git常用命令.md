@@ -1,6 +1,6 @@
 ---
 title: Git常用命令
-categories: Git
+categories: 版本控制
 date: 2019-03-13
 ---
 

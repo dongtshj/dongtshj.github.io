@@ -1,6 +1,6 @@
 ---
 title: SVN的合并操作（svn merge）
-categories: SVN
+categories: 版本控制
 date: 2019-03-01
 ---
 

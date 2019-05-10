@@ -3,7 +3,6 @@
 #}{% if theme.footer.beian.enable %}{#
 #}  {{ next_url('http://www.miitbeian.gov.cn', theme.footer.beian.icp + ' ') }}{#
 #}{% endif %}{#
-#}&copy; { #% if theme.footer.since and theme.footer.since != current % #} {{ theme.footer.since }} – {% endif %}{#
 #}
   
   {# 

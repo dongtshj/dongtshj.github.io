@@ -15,9 +15,9 @@
 {% endif %}
 
 {# Canonical, good for google search engine (SEO) : https://support.google.com/webmasters/answer/139066 #}
-{# % if theme.canonical %}
+{% if theme.canonical %}
   <link rel="canonical" href="{{ config.url }}/{{ page.canonical_path.replace('index.html', '') }}"/>
-{% endif % #}
+{% endif %}
 
 {# Exports some front-matter variables to Front-End #}
 <script id="page.configurations">

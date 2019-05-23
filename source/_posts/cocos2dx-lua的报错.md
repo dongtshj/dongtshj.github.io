@@ -4,6 +4,9 @@ categories: cocos2dx-lua
 date: 2019-05-23
 ---
 
+### #1
+---
+
 项目中的代码类似这样：
 
 `text:setString("xxx")`
@@ -22,10 +25,17 @@ date: 2019-05-23
 
 `text:retain()`
 
-以确保垃圾回收机制没有把它干掉了，我甚至在它的各级父节点都调用 retain() ，奈何始终还是有问题
+以确保垃圾回收机制没有把它干掉了，我甚至在它的各级父节点都调用 retain() ，奈何始终还是有问题。
 
-尼玛后来发现是参数的问题。
+尼玛后来发现是参数的问题：
 
 `invalid arguments` 
 
 我这四级英文真是白学了！
+
+### #2
+---
+
+上面那个报错，是lua绑定C++的代码在进行错误处理时打印的log。除了这个，应用程序的控制台也打印除了对定位问题有很大帮助的log
+
+`error:ccui.Text:setString argument #2 is 'table'; 'string' expected.`

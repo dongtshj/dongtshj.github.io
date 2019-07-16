@@ -1,5 +1,5 @@
 ---
-title: 搭建wordpress网站
+title: 搭建WordPress网站
 categories: Linux
 date: 2019-07-14
 ---

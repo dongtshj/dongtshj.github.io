@@ -27,3 +27,12 @@ date: 2019-07-24
 * 手机连上 `Win32` 电脑，等待 `iTool` 检测到,然后选择 `工具箱`，再选择里面的 `实时日志` 或者 `崩溃日志` 就可以查看了
 
 
+
+### 参考：
+* https://apple.stackovernet.com/cn/q/44097
+* https://wiki.appcelerator.org/display/guides2/Native+iOS+Debugging+and+Testing+Tools#NativeiOSDebuggingandTestingTools-Viewcrashlogsonadevice
+* https://www.jianshu.com/p/75aad79c55a6
+* https://blog.csdn.net/jasonblog/article/details/19031517
+* http://www.cocoachina.com/articles/6677
+
+

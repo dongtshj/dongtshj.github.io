@@ -13,7 +13,7 @@ date: 2019-07-24
 ---
 
 #### 那么问题来了，IOS打包后这个文件生成的位置在哪呢？
-*因为参考了bugly官方文档，我被这个问题耗了不少时间！*根据bugly官方文档说明，这个文件可以这样找到：
+*因为参考了bugly的[官方文档](https://bugly.qq.com/docs/user-guide/symbol-configuration-ios/?v=20180709165613)，我被这个问题耗了不少时间！*根据bugly官方文档说明，这个文件可以这样找到：
 * 打开项目的XCode工程
 * 在`Products`文件夹下，找到`Test.app`
 * 右键，选择`Show in Finder`，这样就能找到dSYM文件了
@@ -31,4 +31,4 @@ date: 2019-07-24
 但是呢，问题又来了。提取这个dSYM文件里的符号表上传到bugly后，发现和APP的崩溃堆栈根本对不上，也就是不匹配的意思；这说明这里生成的dSYM文件并不是我需要的那个dSYM文件！
 
 #### 真正需要的dSYM文件位置
-在XCode工程中，选择 `Window` -> `Organizer` -> `Archives` ，右键选择 `Show in Finder` ，再显示包内容，打开dSYMs文件夹，里面就有打包（`Window` -> `Archive`）对应生成的 `Test.app.dSYM` 文件了: )
+我也是搜遍了大半个互联网，终于找到了一个对我真正有用的[文章](https://www.jianshu.com/p/6fa16720f7b5)。在XCode工程中，选择 `Window` -> `Organizer` -> `Archives` ，右键选择 `Show in Finder` ，再显示包内容，打开dSYMs文件夹，里面就有打包（`Window` -> `Archive`）对应生成的 `Test.app.dSYM` 文件了: )

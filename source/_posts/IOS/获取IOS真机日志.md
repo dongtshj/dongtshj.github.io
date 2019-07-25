@@ -1,0 +1,38 @@
+---
+title: 获取IOS真机日志
+categories: IOS
+date: 2019-07-24
+---
+
+### 为何要纠结这个IOS真机日志呢？
+---
+
+* `android` 和 `ios` 比较，我自然是更熟悉 `android`，还不是因为 `android` 开源免费又便宜😂
+* `android` 随手可得的模拟器、开发工具。换作 `ios` 的话，你得先买个 `Mac` 先
+* `android` 的系统日志功能，我经常使用它来调试一些真机上才会出现的 `bug`，确实方便易用，没有这个系统日志，那我基本上就是个无头苍蝇了
+* 于是我就想啊：`android` 都有的这个方便开发者调试的功能，那 `ios` 上一定也有吧？
+* 今天，这个问题的答案终于被我验证了！确实有的！并且想要查看这个日志，并不需要一定在Mac上或者借助XCode（不过XCode确实附带了一些功能，可以让这些日志更有条理的展现在你面前）
+
+### 在XCode上查看真机日志
+---
+
+#### 查看实时日志
+手机通过数据线连上 `Mac`，打开 `XCode`，通过 `Window` -> `Devices and Simulators` -> `Open Console` 就可以查看手机系统的实时日志了
+#### 以前（非实时）的日志
+和上面同样的方式，最后一步选择 `View Device Logs` 就可以，*注意这里面是可以看到系统记录的APP的崩溃日志的*，至于崩溃日志的格式信息，自己可以打开看下，除了包含一些必要的标识信息之外，还有一个崩溃堆栈的信息。不过我看了下，这些崩溃的堆栈信息基本上都是十六进制形式的，对我好像并没有什么卵用。也许能通过什么方式，比如像使用符号表那样找到对应的代码文件和行数，这个等以后用上的时候再研究吧。
+
+### 使用iTool工具在Win32平台上查看真机日志
+---
+
+* 手机连上 `Win32` 电脑，等待 `iTool` 检测到,然后选择 `工具箱`，再选择里面的 `实时日志` 或者 `崩溃日志` 就可以查看了
+
+
+
+### 参考：
+* https://apple.stackovernet.com/cn/q/44097
+* https://wiki.appcelerator.org/display/guides2/Native+iOS+Debugging+and+Testing+Tools#NativeiOSDebuggingandTestingTools-Viewcrashlogsonadevice
+* https://www.jianshu.com/p/75aad79c55a6
+* https://blog.csdn.net/jasonblog/article/details/19031517
+* http://www.cocoachina.com/articles/6677
+
+

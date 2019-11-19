@@ -102,25 +102,24 @@
   });
 </script>
 
-  <meta name="description" content="介绍 原文在这里:SVN 树冲突解决详解，我只是个搬运工。 SVN的冲突有两种类型：  内容冲突：当两名(或更多)开发人员修改了同一个文件中相邻或相同的行时就会发生文件冲突。 当一名开发人员移动、重命名、删除一个文件或文件夹，而另一名开发人员也对它们进行了移动、重命名、删除或者仅仅是修改，在更新时就会发生树冲突。  第一种很常见，但解决起来比较容易（一周几次的样字）。第二种不怎么常见（个把月碰到一">
-<meta name="keywords" content="游戏编程 软件工程 信息技术 程序设计">
+  <meta name="keywords" content="游戏编程 软件工程 信息技术 程序设计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决SVN树冲突">
-<meta property="og:url" content="https://dongtshj.github.io/版本控制/解决SVN树冲突/index.html">
+<meta property="og:title" content="《远见：如何规划职业生涯三大阶段》">
+<meta property="og:url" content="https://dongtshj.github.io/读书/read/远见：如何规划职业生涯三大阶段/index.html">
 <meta property="og:site_name" content="记录&amp;分享">
-<meta property="og:description" content="介绍 原文在这里:SVN 树冲突解决详解，我只是个搬运工。 SVN的冲突有两种类型：  内容冲突：当两名(或更多)开发人员修改了同一个文件中相邻或相同的行时就会发生文件冲突。 当一名开发人员移动、重命名、删除一个文件或文件夹，而另一名开发人员也对它们进行了移动、重命名、删除或者仅仅是修改，在更新时就会发生树冲突。  第一种很常见，但解决起来比较容易（一周几次的样字）。第二种不怎么常见（个把月碰到一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-28T08:48:57.551Z">
+<meta property="og:image" content="https://i.loli.net/2019/11/19/6mHGEBfQMi7ShR4.jpg">
+<meta property="og:updated_time" content="2019-11-19T16:01:11.428Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决SVN树冲突">
-<meta name="twitter:description" content="介绍 原文在这里:SVN 树冲突解决详解，我只是个搬运工。 SVN的冲突有两种类型：  内容冲突：当两名(或更多)开发人员修改了同一个文件中相邻或相同的行时就会发生文件冲突。 当一名开发人员移动、重命名、删除一个文件或文件夹，而另一名开发人员也对它们进行了移动、重命名、删除或者仅仅是修改，在更新时就会发生树冲突。  第一种很常见，但解决起来比较容易（一周几次的样字）。第二种不怎么常见（个把月碰到一">
+<meta name="twitter:title" content="《远见：如何规划职业生涯三大阶段》">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/19/6mHGEBfQMi7ShR4.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="https://dongtshj.github.io/版本控制/解决SVN树冲突/">
+  <link rel="canonical" href="https://dongtshj.github.io/读书/read/远见：如何规划职业生涯三大阶段/">
 
 
 
@@ -130,7 +129,7 @@
   };
 </script>
 
-  <title>解决SVN树冲突 | 记录&分享</title>
+  <title>《远见：如何规划职业生涯三大阶段》 | 记录&分享</title>
   
 
 
@@ -333,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/解决SVN树冲突/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/读书/read/远见：如何规划职业生涯三大阶段/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -350,7 +349,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">解决SVN树冲突
+          <h2 class="post-title" itemprop="name headline">《远见：如何规划职业生涯三大阶段》
 
               
             
@@ -398,56 +397,9 @@
       
 
       
-        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><hr>
-<p>原文在这里:<a href="https://blog.csdn.net/xgf415/article/details/75196714" target="_blank" rel="noopener">SVN 树冲突解决详解</a>，我只是个搬运工。</p>
-<p>SVN的冲突有两种类型：</p>
-<ul>
-<li>内容冲突：当两名(或更多)开发人员修改了同一个文件中相邻或相同的行时就会发生文件冲突。</li>
-<li>当一名开发人员移动、重命名、删除一个文件或文件夹，而另一名开发人员也对它们进行了移动、重命名、删除或者仅仅是修改，在更新时就会发生树冲突。</li>
-</ul>
-<p>第一种很常见，但解决起来比较容易（一周几次的样字）。第二种不怎么常见（个把月碰到一次）</p>
-<h3 id="树冲突类型和解决方法"><a href="#树冲突类型和解决方法" class="headerlink" title="树冲突类型和解决方法"></a>树冲突类型和解决方法</h3><hr>
-<h4 id="本地删除，外部更改"><a href="#本地删除，外部更改" class="headerlink" title="本地删除，外部更改"></a>本地删除，外部更改</h4><ul>
-<li>A（外部）修改文件并将其提交至版本库中</li>
-<li>B（本地）同时删除了文件</li>
-</ul>
-<p>B更新时就会发生树冲突，该文件被标记为冲突。</p>
-<hr>
-<h4 id="本地改名，外部更改"><a href="#本地改名，外部更改" class="headerlink" title="本地改名，外部更改"></a>本地改名，外部更改</h4><ul>
-<li>A（外部）修改文件，并将其提交至版本库中</li>
-<li>B（本地）同时将文件改名</li>
-</ul>
-<p>B更新时，该文件被标记为树冲突。</p>
-<hr>
-<h4 id="本地更改，外部删除"><a href="#本地更改，外部删除" class="headerlink" title="本地更改，外部删除"></a>本地更改，外部删除</h4><ul>
-<li>A（外部）删除了文件，并提交到了版本库</li>
-<li>B（本地）同时对该文件进行了修改</li>
-</ul>
-<p>B更新时，该文件被标记为树冲突。</p>
-<hr>
-<h4 id="本地更改，外部改名"><a href="#本地更改，外部改名" class="headerlink" title="本地更改，外部改名"></a>本地更改，外部改名</h4><ul>
-<li>A（外部）将文件改名，并提交到了版本库</li>
-<li>B（本地）修改了文件内容</li>
-</ul>
-<p>B更新时，该文件被标记为树冲突。</p>
-<hr>
-<h4 id="本地删除，外部改名"><a href="#本地删除，外部改名" class="headerlink" title="本地删除，外部改名"></a>本地删除，外部改名</h4><ul>
-<li>A（外部）将文件改名，然后提交到版本库</li>
-<li>B（本地）将文件删除</li>
-</ul>
-<p>B更新时，该文件被标记为树冲突。</p>
-<hr>
-<h4 id="本地改名，外部删除"><a href="#本地改名，外部删除" class="headerlink" title="本地改名，外部删除"></a>本地改名，外部删除</h4><ul>
-<li>A（外部）将文件删除，然后提交到版本库</li>
-<li>B（本地）将文件改名</li>
-</ul>
-<p>更新时，B的该文件将发生树冲突。</p>
-<hr>
-<h4 id="本地改名，外部改名"><a href="#本地改名，外部改名" class="headerlink" title="本地改名，外部改名"></a>本地改名，外部改名</h4><ul>
-<li>（外部）将文件改名，并提交到版本库；</li>
-<li>（本地）将同文件改名。</li>
-</ul>
-<p>更新时，B的该文件将发生树冲突。</p>
+        <div align="center"><br><img src="https://i.loli.net/2019/11/19/6mHGEBfQMi7ShR4.jpg" width="300" height="400" alt="书的封面"><br></div>
+
+
 
       
     </div>
@@ -478,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/C/C++版本的XXTEA实现/" rel="next" title="C++版本的XXTEA实现">
-                <i class="fa fa-chevron-left"></i> C++版本的XXTEA实现
+              <a href="/读书/read/稀缺：我们是如何陷入贫穷与忙碌的/" rel="next" title="《稀缺：我们是如何陷入贫穷与忙碌的》">
+                <i class="fa fa-chevron-left"></i> 《稀缺：我们是如何陷入贫穷与忙碌的》
               </a>
             
           </div>
@@ -487,10 +439,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/在类比中学习/goto语句 VS 函数调用/" rel="prev" title="goto语句 VS 函数调用">
-                goto语句 VS 函数调用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

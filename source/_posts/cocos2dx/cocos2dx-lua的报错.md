@@ -1,6 +1,6 @@
 ---
 title: invalid arguments in function 'lua_cocos2dx_ui_Text_setString'
-categories: cocos2dx-lua
+categories: cocos2dx
 date: 2019-05-23
 ---
 

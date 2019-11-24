@@ -1,7 +1,7 @@
 ---
-title: 使用cocos2dx-lua遇到的一些问题
+title: cocos2dx的屏幕适配
 categories: cocos2dx
-date: 2019-08-29
+date: 2019-11-24
 ---
 
 ### bugly上查看崩溃日志的问题

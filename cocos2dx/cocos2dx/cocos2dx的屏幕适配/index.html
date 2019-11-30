@@ -102,25 +102,25 @@
   });
 </script>
 
-  <meta name="description" content="dSYM文件 需要这个文件是因为：bugly需要每次IOS打包生成的dSYM文件，以提取对应的符号表。当bugly记录到APP崩溃时，根据这个符号表可以还原成人类可读的崩溃堆栈信息。没有这个符号表时，bugly后台看到的只是一些十六进制的内存地址；而有了这个符号表就可以还原成崩溃发生在哪个代码文件的哪一行。这样定位问题就非常方便了（某些崩溃即使在有符号表的情况下，依然是一堆十六进制符号。。。） 定">
+  <meta name="description" content="记录一位软件开发者在实践中学习到的知识">
 <meta name="keywords" content="游戏编程 软件工程 信息技术 程序设计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IOS打包生成的dSYM文件">
-<meta property="og:url" content="https://dongtshj.github.io/IOS/IOS/IOS打包生成的dSYM文件/index.html">
+<meta property="og:title" content="cocos2dx的屏幕适配">
+<meta property="og:url" content="https://dongtshj.github.io/cocos2dx/cocos2dx/cocos2dx的屏幕适配/index.html">
 <meta property="og:site_name" content="记录&amp;分享">
-<meta property="og:description" content="dSYM文件 需要这个文件是因为：bugly需要每次IOS打包生成的dSYM文件，以提取对应的符号表。当bugly记录到APP崩溃时，根据这个符号表可以还原成人类可读的崩溃堆栈信息。没有这个符号表时，bugly后台看到的只是一些十六进制的内存地址；而有了这个符号表就可以还原成崩溃发生在哪个代码文件的哪一行。这样定位问题就非常方便了（某些崩溃即使在有符号表的情况下，依然是一堆十六进制符号。。。） 定">
+<meta property="og:description" content="记录一位软件开发者在实践中学习到的知识">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-28T08:48:57.541Z">
+<meta property="og:updated_time" content="2019-11-30T12:41:42.551Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IOS打包生成的dSYM文件">
-<meta name="twitter:description" content="dSYM文件 需要这个文件是因为：bugly需要每次IOS打包生成的dSYM文件，以提取对应的符号表。当bugly记录到APP崩溃时，根据这个符号表可以还原成人类可读的崩溃堆栈信息。没有这个符号表时，bugly后台看到的只是一些十六进制的内存地址；而有了这个符号表就可以还原成崩溃发生在哪个代码文件的哪一行。这样定位问题就非常方便了（某些崩溃即使在有符号表的情况下，依然是一堆十六进制符号。。。） 定">
+<meta name="twitter:title" content="cocos2dx的屏幕适配">
+<meta name="twitter:description" content="记录一位软件开发者在实践中学习到的知识">
 
 
 
 
 
 
-  <link rel="canonical" href="https://dongtshj.github.io/IOS/IOS/IOS打包生成的dSYM文件/">
+  <link rel="canonical" href="https://dongtshj.github.io/cocos2dx/cocos2dx/cocos2dx的屏幕适配/">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>IOS打包生成的dSYM文件 | 记录&分享</title>
+  <title>cocos2dx的屏幕适配 | 记录&分享</title>
   
 
 
@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/IOS/IOS/IOS打包生成的dSYM文件/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx/cocos2dx/cocos2dx的屏幕适配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -350,7 +350,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">IOS打包生成的dSYM文件
+          <h2 class="post-title" itemprop="name headline">cocos2dx的屏幕适配
 
               
             
@@ -398,26 +398,7 @@
       
 
       
-        <h3 id="dSYM文件"><a href="#dSYM文件" class="headerlink" title="dSYM文件"></a>dSYM文件</h3><hr>
-<p>需要这个文件是因为：bugly需要每次IOS打包生成的dSYM文件，以提取对应的符号表。当bugly记录到APP崩溃时，根据这个符号表可以还原成人类可读的崩溃堆栈信息。没有这个符号表时，bugly后台看到的只是一些十六进制的内存地址；而有了这个符号表就可以还原成崩溃发生在哪个代码文件的哪一行。这样定位问题就非常方便了（某些崩溃即使在有符号表的情况下，依然是一堆十六进制符号。。。）</p>
-<h3 id="定位dSYM文件"><a href="#定位dSYM文件" class="headerlink" title="定位dSYM文件"></a>定位dSYM文件</h3><hr>
-<h4 id="那么问题来了，IOS打包后这个文件生成的位置在哪呢？"><a href="#那么问题来了，IOS打包后这个文件生成的位置在哪呢？" class="headerlink" title="那么问题来了，IOS打包后这个文件生成的位置在哪呢？"></a>那么问题来了，IOS打包后这个文件生成的位置在哪呢？</h4><p><em>因为参考了bugly的<a href="https://bugly.qq.com/docs/user-guide/symbol-configuration-ios/?v=20180709165613" target="_blank" rel="noopener">官方文档</a>，我被这个问题耗了不少时间！</em>根据bugly官方文档说明，这个文件可以这样找到：</p>
-<ul>
-<li>打开项目的XCode工程</li>
-<li>在<code>Products</code>文件夹下，找到<code>Test.app</code></li>
-<li>右键，选择<code>Show in Finder</code>，这样就能找到dSYM文件了</li>
-</ul>
-<p>问题是，我发现这个文件在每次打包（<code>Window</code> -&gt; <code>Archive</code>）时，并不会自动生成。于是Google一下，发现release模式下是会默认生成这个文件，而debug模式下则不会。</p>
-<p>我想啊，难道我们项目打包都是用的debug？</p>
-<p>那不太可能吧，不过实在没办法。照网上说法：选中XCode工程的 <code>target</code> -&gt; <code>Build Setting</code> -&gt; <code>Debug Information Fromat</code>，在 <code>Release</code> 项选择 <code>DWARF with dSYM File</code> 。</p>
-<ul>
-<li>问题是，我这样设置了，Archive后还是没有生成新的dSYM文件</li>
-<li>旁边同事说试试删掉旧的dSYM文件呢？我删了后，依旧不会生成新的dSYM文件</li>
-<li>最后我发现，执行XCode工程的 <code>Products</code> -&gt; <code>Clean</code> 命令，然后再执行 <code>Products</code> -&gt; <code>Build</code> 命令。构建结束后，确实生成了新的dSYM文件</li>
-</ul>
-<p>但是呢，问题又来了。提取这个dSYM文件里的符号表上传到bugly后，发现和APP的崩溃堆栈根本对不上，也就是不匹配的意思；这说明这里生成的dSYM文件并不是我需要的那个dSYM文件！</p>
-<h4 id="真正需要的dSYM文件位置"><a href="#真正需要的dSYM文件位置" class="headerlink" title="真正需要的dSYM文件位置"></a>真正需要的dSYM文件位置</h4><p>我也是搜遍了大半个互联网，终于找到了一个对我真正有用的<a href="https://www.jianshu.com/p/6fa16720f7b5" target="_blank" rel="noopener">文章</a>。在XCode工程中，选择 <code>Window</code> -&gt; <code>Organizer</code> -&gt; <code>Archives</code> ，右键选择 <code>Show in Finder</code> ，再显示包内容，打开dSYMs文件夹，里面就有打包（<code>Window</code> -&gt; <code>Archive</code>）对应生成的 <code>Test.app.dSYM</code> 文件了: )</p>
-
+        
       
     </div>
 
@@ -447,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/其他/Other/很特别的周末/" rel="next" title="很特别的周末">
-                <i class="fa fa-chevron-left"></i> 很特别的周末
+              <a href="/读书/read/系统之美：决策者的系统思考/" rel="next" title="《系统之美：决策者的系统思考》">
+                <i class="fa fa-chevron-left"></i> 《系统之美：决策者的系统思考》
               </a>
             
           </div>
@@ -457,8 +438,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/IOS/IOS/获取IOS真机日志/" rel="prev" title="获取IOS真机日志">
-                获取IOS真机日志 <i class="fa fa-chevron-right"></i>
+              <a href="/读书/read/如何学习/" rel="prev" title="《如何学习》">
+                《如何学习》 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

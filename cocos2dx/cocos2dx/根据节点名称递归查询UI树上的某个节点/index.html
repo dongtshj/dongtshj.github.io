@@ -102,25 +102,25 @@
   });
 </script>
 
-  <meta name="description" content="#1 项目中的代码类似这样： text:setString(&amp;quot;xxx&amp;quot;) 类似的报错： invalid arguments in function &amp;#39;bind_func_name&amp;#39; 之前我一直以为是调用对象为 nil 的缘故，我就使劲的找啊找，我想这不可能啊，难道cocos2dx-lua自身又有啥bug？ 我甚至在 text:setString(&amp;quot;xx">
+  <meta name="description" content="现在的项目封装了一个函数，用来根据节点名称递归查询UI树上的某个节点。这个函数使用起来确实是很方便，只要拿一个根节点和要查找的节点，就能获得你想要的。而不是使用一连串的getChildByName这样的方法。项目中现在是大规模的使用这个封装起来的函数。 问题是，这样的缺点也很明显，以至于通常来讲很少看到正常点的项目会大规模使用此类函数，缺点如下：  递归函数很危险而且效率不高，容易导致函数调用栈溢">
 <meta name="keywords" content="游戏编程 软件工程 信息技术 程序设计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="invalid arguments in function &#39;lua_cocos2dx_ui_Text_setString&#39;">
-<meta property="og:url" content="https://dongtshj.github.io/cocos2dx-lua/cocos2dx/cocos2dx-lua的报错/index.html">
+<meta property="og:title" content="根据节点名称递归查询UI树上的某个节点">
+<meta property="og:url" content="https://dongtshj.github.io/cocos2dx/cocos2dx/根据节点名称递归查询UI树上的某个节点/index.html">
 <meta property="og:site_name" content="记录&amp;分享">
-<meta property="og:description" content="#1 项目中的代码类似这样： text:setString(&amp;quot;xxx&amp;quot;) 类似的报错： invalid arguments in function &amp;#39;bind_func_name&amp;#39; 之前我一直以为是调用对象为 nil 的缘故，我就使劲的找啊找，我想这不可能啊，难道cocos2dx-lua自身又有啥bug？ 我甚至在 text:setString(&amp;quot;xx">
+<meta property="og:description" content="现在的项目封装了一个函数，用来根据节点名称递归查询UI树上的某个节点。这个函数使用起来确实是很方便，只要拿一个根节点和要查找的节点，就能获得你想要的。而不是使用一连串的getChildByName这样的方法。项目中现在是大规模的使用这个封装起来的函数。 问题是，这样的缺点也很明显，以至于通常来讲很少看到正常点的项目会大规模使用此类函数，缺点如下：  递归函数很危险而且效率不高，容易导致函数调用栈溢">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-03T08:06:44.131Z">
+<meta property="og:updated_time" content="2019-11-30T12:41:42.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="invalid arguments in function &#39;lua_cocos2dx_ui_Text_setString&#39;">
-<meta name="twitter:description" content="#1 项目中的代码类似这样： text:setString(&amp;quot;xxx&amp;quot;) 类似的报错： invalid arguments in function &amp;#39;bind_func_name&amp;#39; 之前我一直以为是调用对象为 nil 的缘故，我就使劲的找啊找，我想这不可能啊，难道cocos2dx-lua自身又有啥bug？ 我甚至在 text:setString(&amp;quot;xx">
+<meta name="twitter:title" content="根据节点名称递归查询UI树上的某个节点">
+<meta name="twitter:description" content="现在的项目封装了一个函数，用来根据节点名称递归查询UI树上的某个节点。这个函数使用起来确实是很方便，只要拿一个根节点和要查找的节点，就能获得你想要的。而不是使用一连串的getChildByName这样的方法。项目中现在是大规模的使用这个封装起来的函数。 问题是，这样的缺点也很明显，以至于通常来讲很少看到正常点的项目会大规模使用此类函数，缺点如下：  递归函数很危险而且效率不高，容易导致函数调用栈溢">
 
 
 
 
 
 
-  <link rel="canonical" href="https://dongtshj.github.io/cocos2dx-lua/cocos2dx/cocos2dx-lua的报错/">
+  <link rel="canonical" href="https://dongtshj.github.io/cocos2dx/cocos2dx/根据节点名称递归查询UI树上的某个节点/">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>invalid arguments in function 'lua_cocos2dx_ui_Text_setString' | 记录&分享</title>
+  <title>根据节点名称递归查询UI树上的某个节点 | 记录&分享</title>
   
 
 
@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx-lua/cocos2dx/cocos2dx-lua的报错/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx/cocos2dx/根据节点名称递归查询UI树上的某个节点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -350,7 +350,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">invalid arguments in function 'lua_cocos2dx_ui_Text_setString'
+          <h2 class="post-title" itemprop="name headline">根据节点名称递归查询UI树上的某个节点
 
               
             
@@ -398,23 +398,13 @@
       
 
       
-        <h3 id="1"><a href="#1" class="headerlink" title="#1"></a>#1</h3><hr>
-<p>项目中的代码类似这样：</p>
-<p><code>text:setString(&quot;xxx&quot;)</code></p>
-<p>类似的报错：</p>
-<p><code>invalid arguments in function &#39;bind_func_name&#39;</code></p>
-<p>之前我一直以为是调用对象为 nil 的缘故，我就使劲的找啊找，我想这不可能啊，难道cocos2dx-lua自身又有啥bug？</p>
-<p>我甚至在</p>
-<p><code>text:setString(&quot;xxx&quot;)</code></p>
-<p>之前调用了</p>
-<p><code>text:retain()</code></p>
-<p>以确保垃圾回收机制没有把它干掉了，我甚至在它的各级父节点都调用 retain() ，奈何始终还是有问题。</p>
-<p>尼玛后来发现是参数的问题：</p>
-<p><code>invalid arguments</code> </p>
-<p>我这四级英文真是白学了！</p>
-<h3 id="2"><a href="#2" class="headerlink" title="#2"></a>#2</h3><hr>
-<p>上面那个报错，是lua绑定C++的代码在进行错误处理时打印的log。除了这个，应用程序的控制台也打印除了对定位问题有很大帮助的log</p>
-<p><code>error:ccui.Text:setString argument #2 is &#39;table&#39;; &#39;string&#39; expected.</code></p>
+        <p>现在的项目封装了一个函数，用来根据节点名称递归查询UI树上的某个节点。这个函数使用起来确实是很方便，只要拿一个根节点和要查找的节点，就能获得你想要的。而不是使用一连串的getChildByName这样的方法。项目中现在是大规模的使用这个封装起来的函数。</p>
+<p>问题是，这样的缺点也很明显，以至于通常来讲很少看到正常点的项目会大规模使用此类函数，缺点如下：</p>
+<ul>
+<li>递归函数很危险而且效率不高，容易导致函数调用栈溢出。尤其在查找一个处在整棵UI树的深层次位置的子节点时，执行效率堪忧。</li>
+<li>如果使用了此类函数，那么整棵UI树的所有子节点的名称必须要唯一，也就是不能重名。这显然很不合理。</li>
+</ul>
+<p>最近我就踩了上面例举的第二条坑！本来想要查找到A节点，然后对其进行操作。但是发现这些操作无论如何不能产生效果！玛德，消耗了我个把小时！后来发现，整棵UI上还有个B节点，B和A的名称完全相同。而遍历整棵树时，总是会先查找到B节点，然后查找函数就返回结果，不会再继续遍历了！所以之前的操作其实是全部施加到B节点上去了…</p>
 
       
     </div>
@@ -445,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/其他/Other/拿起，放下。/" rel="next" title="拿起，放下。">
-                <i class="fa fa-chevron-left"></i> 拿起，放下。
+              <a href="/其他/Other/偈语/" rel="next" title="偈语">
+                <i class="fa fa-chevron-left"></i> 偈语
               </a>
             
           </div>
@@ -455,8 +445,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/游戏开发/GameDev/心跳机制/" rel="prev" title="心跳机制">
-                心跳机制 <i class="fa fa-chevron-right"></i>
+              <a href="/读书/read/富爸爸穷爸爸/" rel="prev" title="《富爸爸穷爸爸》">
+                《富爸爸穷爸爸》 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

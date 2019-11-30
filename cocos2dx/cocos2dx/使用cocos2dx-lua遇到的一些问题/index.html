@@ -102,24 +102,25 @@
   });
 </script>
 
-  <meta name="description" content="记录一位软件开发者在实践中学习到的知识">
+  <meta name="description" content="bugly上查看崩溃日志的问题 因为底层使用C++，上层使用的Lua的缘故，导致在bugly上查看崩溃堆栈是比较困难的。即使是在开发环境下，要想看到Lua的崩溃堆栈都必须要在VS里，把Lua的项目设置为启动项才行。注意这时是无法查看正确的C++堆栈的，反之亦然。至于线上跑的程序，在崩溃时被bugly记录的堆栈就更难看出什么猫腻了。 调度器（Scheduler） 同事和我有几次发现，项目中的调度器并">
 <meta name="keywords" content="游戏编程 软件工程 信息技术 程序设计">
-<meta property="og:type" content="website">
-<meta property="og:title" content="记录&amp;分享">
-<meta property="og:url" content="https://dongtshj.github.io/categories/cocos2dx-lua/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用cocos2dx-lua遇到的一些问题">
+<meta property="og:url" content="https://dongtshj.github.io/cocos2dx/cocos2dx/使用cocos2dx-lua遇到的一些问题/index.html">
 <meta property="og:site_name" content="记录&amp;分享">
-<meta property="og:description" content="记录一位软件开发者在实践中学习到的知识">
+<meta property="og:description" content="bugly上查看崩溃日志的问题 因为底层使用C++，上层使用的Lua的缘故，导致在bugly上查看崩溃堆栈是比较困难的。即使是在开发环境下，要想看到Lua的崩溃堆栈都必须要在VS里，把Lua的项目设置为启动项才行。注意这时是无法查看正确的C++堆栈的，反之亦然。至于线上跑的程序，在崩溃时被bugly记录的堆栈就更难看出什么猫腻了。 调度器（Scheduler） 同事和我有几次发现，项目中的调度器并">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-30T12:41:42.551Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录&amp;分享">
-<meta name="twitter:description" content="记录一位软件开发者在实践中学习到的知识">
+<meta name="twitter:title" content="使用cocos2dx-lua遇到的一些问题">
+<meta name="twitter:description" content="bugly上查看崩溃日志的问题 因为底层使用C++，上层使用的Lua的缘故，导致在bugly上查看崩溃堆栈是比较困难的。即使是在开发环境下，要想看到Lua的崩溃堆栈都必须要在VS里，把Lua的项目设置为启动项才行。注意这时是无法查看正确的C++堆栈的，反之亦然。至于线上跑的程序，在崩溃时被bugly记录的堆栈就更难看出什么猫腻了。 调度器（Scheduler） 同事和我有几次发现，项目中的调度器并">
 
 
 
 
 
 
-  <link rel="canonical" href="https://dongtshj.github.io/categories/cocos2dx-lua/">
+  <link rel="canonical" href="https://dongtshj.github.io/cocos2dx/cocos2dx/使用cocos2dx-lua遇到的一些问题/">
 
 
 
@@ -129,7 +130,7 @@
   };
 </script>
 
-  <title>分类: cocos2dx-lua | 记录&分享</title>
+  <title>使用cocos2dx-lua遇到的一些问题 | 记录&分享</title>
   
 
 
@@ -185,7 +186,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -242,7 +243,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -292,25 +293,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -335,109 +317,161 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>cocos2dx-lua<small>分类</small>
-        </h2>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx/cocos2dx/使用cocos2dx-lua遇到的一些问题/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/cocos2dx-lua/cocos2dx/根据节点名称递归查询UI树上的某个节点/" itemprop="url">
-            
-              <span itemprop="name">根据节点名称递归查询UI树上的某个节点</span>
-            
-          </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">使用cocos2dx-lua遇到的一些问题
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-10T00:00:00+08:00" content="2019-09-10">
-          09-10
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/cocos2dx-lua/cocos2dx/使用cocos2dx-lua遇到的一些问题/" itemprop="url">
-            
-              <span itemprop="name">使用cocos2dx-lua遇到的一些问题</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-29T00:00:00+08:00" content="2019-08-29">
-          08-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/cocos2dx-lua/cocos2dx/cocos2dx-lua的报错/" itemprop="url">
-            
-              <span itemprop="name">invalid arguments in function 'lua_cocos2dx_ui_Text_setString'</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-23T00:00:00+08:00" content="2019-05-23">
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h3 id="bugly上查看崩溃日志的问题"><a href="#bugly上查看崩溃日志的问题" class="headerlink" title="bugly上查看崩溃日志的问题"></a>bugly上查看崩溃日志的问题</h3><hr>
+<p><strong>因为底层使用C++，上层使用的Lua的缘故，导致在bugly上查看崩溃堆栈是比较困难的。</strong>即使是在开发环境下，要想看到Lua的崩溃堆栈都必须要在VS里，把Lua的项目设置为启动项才行。注意这时是无法查看正确的C++堆栈的，反之亦然。至于线上跑的程序，在崩溃时被bugly记录的堆栈就更难看出什么猫腻了。</p>
+<h3 id="调度器（Scheduler）"><a href="#调度器（Scheduler）" class="headerlink" title="调度器（Scheduler）"></a>调度器（Scheduler）</h3><hr>
+<p>同事和我有几次发现，项目中的调度器并不能保证执行被添加进调度器中函数。当然觉得有点匪夷所思，也有可能是底层的什么bug，或者是当时程序中复杂的其它许多变量、环境造成的。后来发现，项目中的调度器（Scheduler）系统只是使用cocos2dx的动作系统包装而成（延迟动作+回调函数），就去网上搜了下：<em>cocos2dx的动作系统（Action System）的序列动作（sequence action）有没有可能会出现丢失某个动作的可能（项目中的调度器相当于delayTime + callBack这两个动作组合而成）</em>。发现确实有其他开发者遇到<a href="https://forum.cocos.com/t/cocos2dx-3-15-sequence/48654" target="_blank" rel="noopener">这种情况了</a>。</p>
+<p>奈何cocos论坛人气貌似少得可怜，都没几个人回答。又去开发者群里问了下，有个网友指出：<strong>可能是执行这个动作的节点被销毁了或者重制了动画</strong>。又去查看项目封装的代码，发现项目中执行这个动作的节点是当时正在跑的场景节点(running scene)。仔细一想，<strong>还真有场景节点还没创建好，就使用这个节点执行一些动作的可能性存在！</strong></p>
+<p>后来我把出问题的地方，换成<strong>真正用来负责调度器功能</strong>的ccSchedule就OK了</p>
+<p><em>后来我又换回原来使用调度器的方式了，因为使用ccSchedule会产生另外一个比较严重问题。。。</em></p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/其他/Other/时间过的真快啊/" rel="next" title="时间过的真快啊！">
+                <i class="fa fa-chevron-left"></i> 时间过的真快啊！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/其他/Other/偈语/" rel="prev" title="偈语">
+                偈语 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -552,6 +586,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
 
   
 
@@ -562,6 +600,8 @@
 
   
 
+
+  
 
 
   

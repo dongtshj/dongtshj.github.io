@@ -1,6 +1,6 @@
 ---
 title: 根据节点名称递归查询UI树上的某个节点
-categories: cocos2dx-lua
+categories: cocos2dx
 date: 2019-09-10
 ---
 

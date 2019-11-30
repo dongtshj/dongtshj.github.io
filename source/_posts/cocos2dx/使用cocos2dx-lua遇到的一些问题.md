@@ -1,6 +1,6 @@
 ---
 title: 使用cocos2dx-lua遇到的一些问题
-categories: cocos2dx-lua
+categories: cocos2dx
 date: 2019-08-29
 ---
 

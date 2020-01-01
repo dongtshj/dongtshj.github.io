@@ -22,7 +22,7 @@ date: 2020-01-01
 
 不能使用对应的，下面这个命令解决：
 
-`pip install module_name`
+`pip install PIL`
 
 网上搜了一圈，正确的安装命令如下：
 

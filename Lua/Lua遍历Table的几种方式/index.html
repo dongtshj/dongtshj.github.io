@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next mist" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4711868256207230",
+    enable_page_level_ads: true
+  });
+</script>
+
+  <meta name="description" content="for语句 + #tab 这种方式只适合遍历被当作单纯的数组使用时的table，并且没有自定义元素的索引123456789101112131415161718192021222324252627# 先定义一个使用for语句 + #tab的遍历函数function Traversal(tab)     print(#tab .. |)    for i = 1, #tab do         pr">
+<meta name="keywords" content="游戏编程 软件工程 阅读 读书">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua遍历Table的几种方式">
+<meta property="og:url" content="https://dongtshj.github.io/Lua/Lua遍历Table的几种方式/index.html">
+<meta property="og:site_name" content="记录&amp;分享">
+<meta property="og:description" content="for语句 + #tab 这种方式只适合遍历被当作单纯的数组使用时的table，并且没有自定义元素的索引123456789101112131415161718192021222324252627# 先定义一个使用for语句 + #tab的遍历函数function Traversal(tab)     print(#tab .. |)    for i = 1, #tab do         pr">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-28T08:48:57.545Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lua遍历Table的几种方式">
+<meta name="twitter:description" content="for语句 + #tab 这种方式只适合遍历被当作单纯的数组使用时的table，并且没有自定义元素的索引123456789101112131415161718192021222324252627# 先定义一个使用for语句 + #tab的遍历函数function Traversal(tab)     print(#tab .. |)    for i = 1, #tab do         pr">
+
+
+
+
+
+
+  <link rel="canonical" href="https://dongtshj.github.io/Lua/Lua遍历Table的几种方式/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Lua遍历Table的几种方式 | 记录&分享</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-135514886-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-135514886-1');
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记录&分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">dongtshj的技术博客</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+
+    
+
+    <a href="/" rel="section">首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+
+    
+
+    <a href="/categories/" rel="section">分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+
+    
+
+    <a href="/archives/" rel="section">归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+
+    
+
+    <a href="/about/" rel="section">关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Lua/Lua遍历Table的几种方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Lua遍历Table的几种方式
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="for语句-tab"><a href="#for语句-tab" class="headerlink" title="for语句 + #tab"></a>for语句 + #tab</h3><hr>
+<p>这种方式只适合遍历被当作单纯的数组使用时的table，并且没有自定义元素的索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># 先定义一个使用for语句 + #tab的遍历函数</span><br><span class="line">function Traversal(tab) </span><br><span class="line">    print(#tab .. |)</span><br><span class="line">    for i = 1, #tab do </span><br><span class="line">        print(tab[i]) </span><br><span class="line">    end </span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">local tab = &#123;0, 1, 2, 5, 9, 7&#125;</span><br><span class="line">Traversal(tab)</span><br><span class="line"># 打印结果：6|0 1 2 5 9 7</span><br><span class="line"># 这个结果很符合预期</span><br><span class="line"></span><br><span class="line"># 现在假设tab的内容是这样的：</span><br><span class="line"></span><br><span class="line">tab = &#123;0, 1, [4] = 2&#125;</span><br><span class="line">Traversal(tab)</span><br><span class="line"># 打印结果：2|0 1</span><br><span class="line"></span><br><span class="line"># 或者下面这样：</span><br><span class="line"></span><br><span class="line">tab = &#123;[2] = 0, 1, 2&#125;</span><br><span class="line">Traversal(tab)</span><br><span class="line"># 打印结果：2|1 2</span><br><span class="line"></span><br><span class="line"># 显然当tab的索引不连续时，这种方式只把连续的元素打印出来了</span><br><span class="line"># 这是因为#tab的值只表示索引连续的元素个数，而不是tab的所有元素个数</span><br></pre></td></tr></table></figure></p>
+<h3 id="for语句-pairs"><a href="#for语句-pairs" class="headerlink" title="for语句 + pairs"></a>for语句 + pairs</h3><hr>
+<p>这种方式几乎可以遍历各种形式的table，但是遍历的顺序可能不符合预期，因为它是按照key的hash值来顺序遍历的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function Traversal(tab) </span><br><span class="line">    for k, v in pairs(tab) do</span><br><span class="line">        print(k .. &quot;:&quot; .. v)</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">local tab = &#123;0, 1, 2, 5, 9, 7&#125; </span><br><span class="line">Traversal(tab)</span><br><span class="line"># 打印结果：1:0 2:1 3:2 4:5 5:9 6:7</span><br><span class="line"></span><br><span class="line">tab = &#123;[&quot;ad&quot;] = 0, 1, 2&#125;</span><br><span class="line">Traversal(tab)</span><br><span class="line"># 打印结果：1:1 2:2 ad:0</span><br><span class="line"></span><br><span class="line">tab = &#123;&quot;A&quot;, &quot;B&quot;, [9] = &quot;C&quot;, 1, [5] = &quot;D&quot;, 12&#125;</span><br><span class="line">Traversal(tab)</span><br><span class="line"># 打印结果：1:A 2:B 3:1 4:12 5:D 9:C</span><br><span class="line"></span><br><span class="line">local tab = &#123;[2]= &quot;A&quot;, &quot;B&quot;, [9] = &quot;C&quot;, 1, [5] = &quot;D&quot;, 12&#125;</span><br><span class="line">Traversal(tab)</span><br><span class="line"># 打印结果：1:B 2:1 3:12 9:C 5:D</span><br><span class="line"># 注意：&quot;A&quot;没有打印出来，这就是为什么说它几乎能遍历所有形式的table</span><br><span class="line"># 但是几乎没有会像上面那样使用table。。。</span><br></pre></td></tr></table></figure></p>
+<h3 id="for语句-ipairs"><a href="#for语句-ipairs" class="headerlink" title="for语句 + ipairs"></a>for语句 + ipairs</h3><hr>
+<p>这种方式只是形式上和for + pairs很像，内部机制差异很大。首先它很容易就会中断遍历操作（for + pairs几乎不会中断操作），但是它也有自己的优势：可以保证遍历的顺序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function Traversal(tab) </span><br><span class="line">    for k, v in ipairs(tab) do</span><br><span class="line">        print(k .. &quot;:&quot; .. v)</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">local tab = &#123;&quot;A&quot;, 5, &quot;D&quot;, 12&#125;</span><br><span class="line">Traversal(tab)</span><br><span class="line"># 打印结果：1:A 2:5 3:D 4:12</span><br><span class="line"></span><br><span class="line">tab = &#123;0, 123, 12, &quot;C&quot;, [7] = 3&#125;</span><br><span class="line">Traversal(tab)</span><br><span class="line"># 打印结果：1:0 2:123 3:12 4:C</span><br><span class="line"># 注意：在索引不连续时，中断了遍历</span><br><span class="line"></span><br><span class="line">tab = &#123;[2]= &quot;A&quot;, &quot;B&quot;, [9] = &quot;C&quot;, 1, [5] = &quot;D&quot;, 12&#125;</span><br><span class="line">Traversal(tab)</span><br><span class="line"># 打印结果：1:B 2:1 3:12</span><br></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>综上，在Lua的世界里，竟然找不到一个可以在任何情境下都能保证完全遍历出一个table！甚至在不要求遍历顺序的前提下，也找不到！为什么在一个编程语言里会出现这样的设计呢？要知道在像C++、JAVA之类的语言里，这简直是标配好不好！管你是普通数组还是关联数组，分分钟搞定。</p>
+<p>在我看来，感觉是因为table在Lua里面实在是太灵活了！</p>
+<ul>
+<li>没有类型限制，同一个table里可以同时存放字符、数值、函数甚至是另一个table！</li>
+<li>同一个table里既可以放单个元素，也能存放key-value形式的键值对</li>
+</ul>
+<p>就这么多了，记得选择合适自己需求的方式就行了</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Lua/Lua中的Table常见操作/" rel="next" title="Lua中的Table常见操作">
+                <i class="fa fa-chevron-left"></i> Lua中的Table常见操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Lua/Lua的元表与元方法/" rel="prev" title="Lua的元表与元方法">
+                Lua的元表与元方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; 
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+<script type="text/javascript" src="/js/src/anime.min.js"></script>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+</body>
+</html>

@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/C++版本的XXTEA实现/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/使用VSCode调试C++代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -353,7 +353,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/C/C++版本的XXTEA实现/" class="post-title-link" itemprop="url">C++版本的XXTEA实现</a>
+                <a href="/C/使用VSCode调试C++代码/" class="post-title-link" itemprop="url">使用VSCode调试C++代码</a>
               
             
           </h2>
@@ -403,14 +403,17 @@
         
           
             <p>
-              算法实现
-头文件：xxtea.h#ifndef XXTEA_H#define XXTEA_H#include &lt;stddef.h&gt; /* for size_t &amp; NULL declarations */#if defined(_MSC_VER)typedef unsigned 
+              相关配置
+
+这里有一份模板：https://github.com/dongtshj/debugCpp
+c_cpp_properties.json：这个文件主要配置一些项目属性，include路径、定义的宏、编译器路径、C/C++版本等
+launch.json：配置启动参数，只不过C++的要比其它脚本
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/C/C++版本的XXTEA实现/#more" rel="contents">
+              <a class="btn" href="/C/使用VSCode调试C++代码/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -470,7 +473,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/JavaScript/使用VSCode调试JavaScript代码/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Python/Python版本的XXTEA实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -490,7 +493,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/JavaScript/使用VSCode调试JavaScript代码/" class="post-title-link" itemprop="url">使用VSCode调试JavaScript代码</a>
+                <a href="/Python/Python版本的XXTEA实现/" class="post-title-link" itemprop="url">Python版本的XXTEA实现</a>
               
             
           </h2>
@@ -540,16 +543,17 @@
         
           
             <p>
-              说明
+              关于xxtea
 
-这里有现成的模块：https://github.com/dongtshj/debugJS
-想要执行、调试JavaScript代码，就需要JavaScript的解释器、调试器程序。这些都集成在了JavaScript引擎之中，而JavaScript引擎一般是集成在浏览器程序之中的，比如Googl
+xxtea一种简单、执行快速的加密方式，通常很少的代码量就能实现，缺点就是安全性不高
+对称密钥加密的一种：加密解密使用相同的密钥
+全称：Tiny Encryption Algorithm（中文：微型加密算法），前身是xtea；xtea的前身又是tea，最新的加强版本就是xxtea了
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/JavaScript/使用VSCode调试JavaScript代码/#more" rel="contents">
+              <a class="btn" href="/Python/Python版本的XXTEA实现/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1308,6 +1312,143 @@ Lua中的模块、包以及面向对象等概念也是靠table来实现的。
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/Git常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/版本控制/Git常用命令/" class="post-title-link" itemprop="url">Git常用命令</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              生成ssh key
+我是为了用来访问github上的repo，带.pub的是公钥，不带后缀的使密钥。把公钥内容粘贴到github的账户设置里就可以访问远程repo了,如果本地机器已经有了公钥，注意会提示你是否执行覆盖操作，然后一路回车就行了。ssh-keygen -t rsa -C &quot;yo
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/版本控制/Git常用命令/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Android/使用logcat查看android系统日志/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1389,143 +1530,6 @@ SDK相关
           
             <div class="post-button text-center">
               <a class="btn" href="/Android/使用logcat查看android系统日志/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/Git常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/版本控制/Git常用命令/" class="post-title-link" itemprop="url">Git常用命令</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              生成ssh key
-我是为了用来访问github上的repo，带.pub的是公钥，不带后缀的使密钥。把公钥内容粘贴到github的账户设置里就可以访问远程repo了,如果本地机器已经有了公钥，注意会提示你是否执行覆盖操作，然后一路回车就行了。ssh-keygen -t rsa -C &quot;yo
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/版本控制/Git常用命令/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

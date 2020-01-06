@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 记录&分享
-subtitle: dongtshj的技术博客
-description: 记录一位软件开发者在实践中学习到的知识
-keywords: 游戏编程 软件工程 阅读 读书
+title: dongtshj的技术博客
+subtitle: 包含游戏开发、编程语言、计算机网络技术等相关知识点
+description: 记录一位软件开发者在实践中学习到的各种知识
+keywords: 游戏开发 编程语言 软件工程 信息技术 计算机 互联网 
 author: dongtshj
 language: zh-CN
 timezone:

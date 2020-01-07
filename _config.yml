@@ -79,7 +79,8 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:dongtshj/dongtshj.github.io.git  # 这种配置需使用 SSH
+  #repo: git@github.com:dongtshj/dongtshj.github.io.git  # 这种配置需使用 SSH
+  repo: https://dongtshj:del11.11@github.com/dongtshj/dongtshj.github.io.git
   branch: master
   message: message  # 默认为 Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}
 

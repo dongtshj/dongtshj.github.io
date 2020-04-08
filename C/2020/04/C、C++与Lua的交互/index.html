@@ -102,25 +102,25 @@
   });
 </script>
 
-  <meta name="description" content="其实很简单。 不要使用基于SSH协议的方式和github进行交互。 而是换成HTTPS的方式。 这样的话，就可以在每个项目的.git/config里，单独配置访问github的相关账号配置，缺点是可能会暴露你的github的明文密码。但是如果你不在.git/config里配置github账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。 这个时候项目的url应该配置成： http">
+  <meta name="description" content="栈C/C++与Lua的交互通过栈来实现的，可以通过下面API来对栈进行操作： 12345678lua_toboolean()lua_tonumber()lua_tostring()lua_pushboolean()lua_pushinteger()lua_pushnumber()lua_pushstring()... Lua调用C函数被调用的C函数需要满足下面的函数原型： 1typedef int">
 <meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一台电脑如何同时使用两个github账号">
-<meta property="og:url" content="https://dongtshj.github.io/版本控制/2020/01/一台电脑如何同时使用两个github账号/index.html">
+<meta property="og:title" content="C、C++与Lua的交互">
+<meta property="og:url" content="https://dongtshj.github.io/C/2020/04/C、C++与Lua的交互/index.html">
 <meta property="og:site_name" content="记录&amp;分享">
-<meta property="og:description" content="其实很简单。 不要使用基于SSH协议的方式和github进行交互。 而是换成HTTPS的方式。 这样的话，就可以在每个项目的.git/config里，单独配置访问github的相关账号配置，缺点是可能会暴露你的github的明文密码。但是如果你不在.git/config里配置github账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。 这个时候项目的url应该配置成： http">
+<meta property="og:description" content="栈C/C++与Lua的交互通过栈来实现的，可以通过下面API来对栈进行操作： 12345678lua_toboolean()lua_tonumber()lua_tostring()lua_pushboolean()lua_pushinteger()lua_pushnumber()lua_pushstring()... Lua调用C函数被调用的C函数需要满足下面的函数原型： 1typedef int">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-14T14:46:13.308Z">
+<meta property="og:updated_time" content="2020-04-08T12:06:11.867Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一台电脑如何同时使用两个github账号">
-<meta name="twitter:description" content="其实很简单。 不要使用基于SSH协议的方式和github进行交互。 而是换成HTTPS的方式。 这样的话，就可以在每个项目的.git/config里，单独配置访问github的相关账号配置，缺点是可能会暴露你的github的明文密码。但是如果你不在.git/config里配置github账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。 这个时候项目的url应该配置成： http">
+<meta name="twitter:title" content="C、C++与Lua的交互">
+<meta name="twitter:description" content="栈C/C++与Lua的交互通过栈来实现的，可以通过下面API来对栈进行操作： 12345678lua_toboolean()lua_tonumber()lua_tostring()lua_pushboolean()lua_pushinteger()lua_pushnumber()lua_pushstring()... Lua调用C函数被调用的C函数需要满足下面的函数原型： 1typedef int">
 
 
 
 
 
 
-  <link rel="canonical" href="https://dongtshj.github.io/版本控制/2020/01/一台电脑如何同时使用两个github账号/">
+  <link rel="canonical" href="https://dongtshj.github.io/C/2020/04/C、C++与Lua的交互/">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>一台电脑如何同时使用两个github账号 | 记录&分享</title>
+  <title>C、C++与Lua的交互 | 记录&分享</title>
   
 
 
@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/2020/01/一台电脑如何同时使用两个github账号/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2020/04/C、C++与Lua的交互/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -350,7 +350,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">一台电脑如何同时使用两个github账号
+          <h2 class="post-title" itemprop="name headline">C、C++与Lua的交互
 
               
             
@@ -398,22 +398,17 @@
       
 
       
-        <p>其实很简单。</p>
-<p>不要使用基于<code>SSH</code>协议的方式和<code>github</code>进行交互。</p>
-<p>而是换成<code>HTTPS</code>的方式。</p>
-<p>这样的话，就可以在每个项目的<code>.git/config</code>里，单独配置访问<code>github</code>的相关账号配置，缺点是可能会暴露你的<code>github</code>的明文密码。但是如果你不在<code>.git/config</code>里配置<code>github</code>账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。</p>
-<p>这个时候项目的<code>url</code>应该配置成：</p>
-<p><code>https://YourGithubName:YourGithubPassword@github.com/YourGithubName/YourProjectName.git</code></p>
-<p>不想把你的<code>github</code>密码暴露出来的话把上面的<code>:YourGithubPassword</code>去掉就可以了，这个时候每次提交需要你手动输入密码。</p>
-<p>如何你采用了上面的建议的话，记得不要执行下面的<code>git</code>命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;John Doe&quot;</span><br><span class="line">git config --global user.email &quot;johndoe@example.com&quot;</span><br></pre></td></tr></table></figure>
-<p>如果你已经执行过了，那可以执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset user.name &quot;John Doe&quot;</span><br><span class="line">git config --global --unset user.email &quot;johndoe@example.com&quot;</span><br></pre></td></tr></table></figure>
-<p>来撤销上面的全局设置。</p>
-<p><code>SSH</code>的方式也许可以单独配置每个项目，但是我尝试过好几次，都失败了。</p>
-<p>各种权限错误、拒绝访问。</p>
-<p>感觉像是账号和项目都串门了。</p>
-
+        <h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>C/C++与Lua的交互通过栈来实现的，可以通过下面API来对栈进行操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lua_toboolean()</span><br><span class="line">lua_tonumber()</span><br><span class="line">lua_tostring()</span><br><span class="line">lua_pushboolean()</span><br><span class="line">lua_pushinteger()</span><br><span class="line">lua_pushnumber()</span><br><span class="line">lua_pushstring()</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="Lua调用C函数"><a href="#Lua调用C函数" class="headerlink" title="Lua调用C函数"></a>Lua调用C函数</h3><p>被调用的C函数需要满足下面的函数原型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef int (*lua_CFunction) (lua_State *L);</span><br></pre></td></tr></table></figure>
+<p>下面例子中的C函数将接收若干数字参数，并返回它们的平均数与和：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">static int C_FUNC_SUM (lua_State *L) </span><br><span class="line">&#123;</span><br><span class="line">    int n = lua_gettop(L);          /* 参数的个数 */</span><br><span class="line">    lua_Number sum = 0.0;</span><br><span class="line">    int i;</span><br><span class="line">    for (i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        if (!lua_isnumber(L, i)) &#123;</span><br><span class="line">        lua_pushliteral(L, &quot;incorrect argument&quot;);</span><br><span class="line">        lua_error(L);</span><br><span class="line">        &#125;</span><br><span class="line">        sum += lua_tonumber(L, i);</span><br><span class="line">    &#125;</span><br><span class="line">    lua_pushnumber(L, sum/n);       /* 第一个返回值 */</span><br><span class="line">    lua_pushnumber(L, sum);         /* 第二个返回值 */</span><br><span class="line">    return 2;                       /* 返回值的个数 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C调用Lua函数"><a href="#C调用Lua函数" class="headerlink" title="C调用Lua函数"></a>C调用Lua函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void lua_call (lua_State *L, int nargs, int nresults);</span><br></pre></td></tr></table></figure>
+<p>下面的例子中，这行 Lua 代码等价于在宿主程序中用 C 代码做一些工作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = f(&quot;how&quot;, t.x, 14)</span><br></pre></td></tr></table></figure>
+<p>这里是与上面Lua代码等价的C代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lua_getglobal(L, &quot;f&quot;);                  /* function to be called */</span><br><span class="line">lua_pushliteral(L, &quot;how&quot;);                       /* 1st argument */</span><br><span class="line">lua_getglobal(L, &quot;t&quot;);                    /* table to be indexed */</span><br><span class="line">lua_getfield(L, -1, &quot;x&quot;);        /* push result of t.x (2nd arg) */</span><br><span class="line">lua_remove(L, -2);                  /* remove &apos;t&apos; from the stack */</span><br><span class="line">lua_pushinteger(L, 14);                          /* 3rd argument */</span><br><span class="line">lua_call(L, 3, 1);     /* call &apos;f&apos; with 3 arguments and 1 result */</span><br><span class="line">lua_setglobal(L, &quot;a&quot;);                         /* set global &apos;a&apos; */</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -443,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Linux/2020/01/vi中文乱码/" rel="next" title="vi中文乱码">
-                <i class="fa fa-chevron-left"></i> vi中文乱码
+              <a href="/游戏开发/2020/04/纹理格式与像素格式/" rel="next" title="纹理格式与像素格式">
+                <i class="fa fa-chevron-left"></i> 纹理格式与像素格式
               </a>
             
           </div>
@@ -452,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Python/2020/01/软件包管理系统：pip/" rel="prev" title="软件包管理系统：pip">
-                软件包管理系统：pip <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

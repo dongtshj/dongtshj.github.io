@@ -102,25 +102,25 @@
   });
 </script>
 
-  <meta name="description" content="其实很简单。 不要使用基于SSH协议的方式和github进行交互。 而是换成HTTPS的方式。 这样的话，就可以在每个项目的.git/config里，单独配置访问github的相关账号配置，缺点是可能会暴露你的github的明文密码。但是如果你不在.git/config里配置github账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。 这个时候项目的url应该配置成： http">
+  <meta name="description" content="mapSTL的map底层是用红黑树存储的，查找时间复杂度是log(n)级别 hash_mapSTL的hash_map底层是用hash表存储的，查询时间复杂度是常数级别 什么时候用map，什么时候用hash_map?这个要看具体的应用，不一定常数级别的hash_map一定比log(n)级别的map要好，hash_map的hash函数以及解决地址冲突等都要耗时，而且众所周知hash表是以空间效率来换时">
 <meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一台电脑如何同时使用两个github账号">
-<meta property="og:url" content="https://dongtshj.github.io/版本控制/2020/01/一台电脑如何同时使用两个github账号/index.html">
+<meta property="og:title" content="STL中的map与hash_map">
+<meta property="og:url" content="https://dongtshj.github.io/C/2020/04/STL中的map与hash_map/index.html">
 <meta property="og:site_name" content="记录&amp;分享">
-<meta property="og:description" content="其实很简单。 不要使用基于SSH协议的方式和github进行交互。 而是换成HTTPS的方式。 这样的话，就可以在每个项目的.git/config里，单独配置访问github的相关账号配置，缺点是可能会暴露你的github的明文密码。但是如果你不在.git/config里配置github账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。 这个时候项目的url应该配置成： http">
+<meta property="og:description" content="mapSTL的map底层是用红黑树存储的，查找时间复杂度是log(n)级别 hash_mapSTL的hash_map底层是用hash表存储的，查询时间复杂度是常数级别 什么时候用map，什么时候用hash_map?这个要看具体的应用，不一定常数级别的hash_map一定比log(n)级别的map要好，hash_map的hash函数以及解决地址冲突等都要耗时，而且众所周知hash表是以空间效率来换时">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-14T14:46:13.308Z">
+<meta property="og:updated_time" content="2020-04-08T07:33:55.066Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一台电脑如何同时使用两个github账号">
-<meta name="twitter:description" content="其实很简单。 不要使用基于SSH协议的方式和github进行交互。 而是换成HTTPS的方式。 这样的话，就可以在每个项目的.git/config里，单独配置访问github的相关账号配置，缺点是可能会暴露你的github的明文密码。但是如果你不在.git/config里配置github账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。 这个时候项目的url应该配置成： http">
+<meta name="twitter:title" content="STL中的map与hash_map">
+<meta name="twitter:description" content="mapSTL的map底层是用红黑树存储的，查找时间复杂度是log(n)级别 hash_mapSTL的hash_map底层是用hash表存储的，查询时间复杂度是常数级别 什么时候用map，什么时候用hash_map?这个要看具体的应用，不一定常数级别的hash_map一定比log(n)级别的map要好，hash_map的hash函数以及解决地址冲突等都要耗时，而且众所周知hash表是以空间效率来换时">
 
 
 
 
 
 
-  <link rel="canonical" href="https://dongtshj.github.io/版本控制/2020/01/一台电脑如何同时使用两个github账号/">
+  <link rel="canonical" href="https://dongtshj.github.io/C/2020/04/STL中的map与hash_map/">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>一台电脑如何同时使用两个github账号 | 记录&分享</title>
+  <title>STL中的map与hash_map | 记录&分享</title>
   
 
 
@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/2020/01/一台电脑如何同时使用两个github账号/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2020/04/STL中的map与hash_map/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -350,7 +350,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">一台电脑如何同时使用两个github账号
+          <h2 class="post-title" itemprop="name headline">STL中的map与hash_map
 
               
             
@@ -398,21 +398,9 @@
       
 
       
-        <p>其实很简单。</p>
-<p>不要使用基于<code>SSH</code>协议的方式和<code>github</code>进行交互。</p>
-<p>而是换成<code>HTTPS</code>的方式。</p>
-<p>这样的话，就可以在每个项目的<code>.git/config</code>里，单独配置访问<code>github</code>的相关账号配置，缺点是可能会暴露你的<code>github</code>的明文密码。但是如果你不在<code>.git/config</code>里配置<code>github</code>账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。</p>
-<p>这个时候项目的<code>url</code>应该配置成：</p>
-<p><code>https://YourGithubName:YourGithubPassword@github.com/YourGithubName/YourProjectName.git</code></p>
-<p>不想把你的<code>github</code>密码暴露出来的话把上面的<code>:YourGithubPassword</code>去掉就可以了，这个时候每次提交需要你手动输入密码。</p>
-<p>如何你采用了上面的建议的话，记得不要执行下面的<code>git</code>命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;John Doe&quot;</span><br><span class="line">git config --global user.email &quot;johndoe@example.com&quot;</span><br></pre></td></tr></table></figure>
-<p>如果你已经执行过了，那可以执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset user.name &quot;John Doe&quot;</span><br><span class="line">git config --global --unset user.email &quot;johndoe@example.com&quot;</span><br></pre></td></tr></table></figure>
-<p>来撤销上面的全局设置。</p>
-<p><code>SSH</code>的方式也许可以单独配置每个项目，但是我尝试过好几次，都失败了。</p>
-<p>各种权限错误、拒绝访问。</p>
-<p>感觉像是账号和项目都串门了。</p>
+        <h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>STL的map底层是用红黑树存储的，查找时间复杂度是log(n)级别</p>
+<h3 id="hash-map"><a href="#hash-map" class="headerlink" title="hash_map"></a>hash_map</h3><p>STL的hash_map底层是用hash表存储的，查询时间复杂度是常数级别</p>
+<h3 id="什么时候用map，什么时候用hash-map"><a href="#什么时候用map，什么时候用hash-map" class="headerlink" title="什么时候用map，什么时候用hash_map?"></a>什么时候用map，什么时候用hash_map?</h3><p>这个要看具体的应用，不一定常数级别的hash_map一定比log(n)级别的map要好，hash_map的hash函数以及解决地址冲突等都要耗时，而且众所周知hash表是以空间效率来换时间效率的，因而hash_map的内存消耗肯定要大。一般情况下，如果记录数非常大时，考虑hash_map，查找效率会高很多，如果要考虑内存消耗，则要谨慎使用hash_map。</p>
 
       
     </div>
@@ -443,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Linux/2020/01/vi中文乱码/" rel="next" title="vi中文乱码">
-                <i class="fa fa-chevron-left"></i> vi中文乱码
+              <a href="/Linux/2020/02/禁止windows关机：远程连接时防止远端机器意外关机/" rel="next" title="禁止windows关机：远程连接时防止远端机器意外关机">
+                <i class="fa fa-chevron-left"></i> 禁止windows关机：远程连接时防止远端机器意外关机
               </a>
             
           </div>
@@ -453,8 +441,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Python/2020/01/软件包管理系统：pip/" rel="prev" title="软件包管理系统：pip">
-                软件包管理系统：pip <i class="fa fa-chevron-right"></i>
+              <a href="/游戏开发/2020/04/纹理格式与像素格式/" rel="prev" title="纹理格式与像素格式">
+                纹理格式与像素格式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/OOP/2019/03/软件固有的复杂性/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Android/2019/03/使用logcat查看android系统日志/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -353,7 +353,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/OOP/2019/03/软件固有的复杂性/" class="post-title-link" itemprop="url">软件固有的复杂性</a>
+                <a href="/Android/2019/03/使用logcat查看android系统日志/" class="post-title-link" itemprop="url">使用logcat查看android系统日志</a>
               
             
           </h2>
@@ -403,15 +403,154 @@
         
           
             <p>
-              定义软件的复杂性工业级软件的特征是，单个开发者要理解其设计的所有方面非常困难，几乎是不可能的。武断地说，这些系统的复杂性超出了人类智能的范围。不幸的是，我们所说的这种复杂性似乎是所有大型软件系统的基本特征。从根本上来说，我们可以掌握这种复杂性，但不能消除这种复杂性。
+              对我这个做游戏开发的来说，在android平台上通常会遇到的棘手情况如下
 
-软件的复杂性是一个基本特征，而
+安卓游戏程序通常通过JNI技术调用游戏的C++代码，所以在eclipse或者android studio上根本没法断点调试
+可能会遇到开发环境下（win32）运行正常，但是打包后在android上跑时就会出现问题
+SDK相关
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/OOP/2019/03/软件固有的复杂性/#more" rel="contents">
+              <a class="btn" href="/Android/2019/03/使用logcat查看android系统日志/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/2019/03/Git常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/版本控制/2019/03/Git常用命令/" class="post-title-link" itemprop="url">Git常用命令</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              生成ssh key
+我是为了用来访问github上的repo，带.pub的是公钥，不带后缀的使密钥。把公钥内容粘贴到github的账户设置里就可以访问远程repo了,如果本地机器已经有了公钥，注意会提示你是否执行覆盖操作，然后一路回车就行了。ssh-keygen -t rsa -C &quot;yo
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/版本控制/2019/03/Git常用命令/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -608,7 +747,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Lua/2019/03/Lua中的String常见操作/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/OOP/2019/03/软件固有的复杂性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -628,7 +767,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/Lua/2019/03/Lua中的String常见操作/" class="post-title-link" itemprop="url">Lua中的String常见操作</a>
+                <a href="/OOP/2019/03/软件固有的复杂性/" class="post-title-link" itemprop="url">软件固有的复杂性</a>
               
             
           </h2>
@@ -678,20 +817,15 @@
         
           
             <p>
-              替换操作
-string.gsub(s, pattern, repl [, n])
+              定义软件的复杂性工业级软件的特征是，单个开发者要理解其设计的所有方面非常困难，几乎是不可能的。武断地说，这些系统的复杂性超出了人类智能的范围。不幸的是，我们所说的这种复杂性似乎是所有大型软件系统的基本特征。从根本上来说，我们可以掌握这种复杂性，但不能消除这种复杂性。
 
-s：想要被操作的整个字符串
-pattern：整个字符串中想要被替换掉的字符串
-repl：替换上面pattern的字符串
-[, n]：中括号表示可选的参数n，替换n次；忽略则全部替换
-返回值：替换后的字符串和替换的次数
+软件的复杂性是一个基本特征，而
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/Lua/2019/03/Lua中的String常见操作/#more" rel="contents">
+              <a class="btn" href="/OOP/2019/03/软件固有的复杂性/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -832,6 +966,149 @@ repl：替换上面pattern的字符串
           
             <div class="post-button text-center">
               <a class="btn" href="/OOP/2019/03/OOP中的继承/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Lua/2019/03/Lua中的String常见操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/Lua/2019/03/Lua中的String常见操作/" class="post-title-link" itemprop="url">Lua中的String常见操作</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              替换操作
+string.gsub(s, pattern, repl [, n])
+
+s：想要被操作的整个字符串
+pattern：整个字符串中想要被替换掉的字符串
+repl：替换上面pattern的字符串
+[, n]：中括号表示可选的参数n，替换n次；忽略则全部替换
+返回值：替换后的字符串和替换的次数
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/Lua/2019/03/Lua中的String常见操作/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

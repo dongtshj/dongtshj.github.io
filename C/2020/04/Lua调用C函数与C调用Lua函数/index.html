@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next mist" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4711868256207230",
+    enable_page_level_ads: true
+  });
+</script>
+
+  <meta name="description" content="Lua调用C步骤：  将C的函数包装成Lua环境认可的函数 将包装好的函数注册到Lua环境中 像使用普通Lua函数那样使用注册函数好的C函数  包装C函数为了从Lua脚本中调用C函数，需要将被调用的C函数从普通的C函数包装成Lua_CFunction格式，并需要在函数中将返回值压入栈中，并返回返回值个数： 123456int (Lua_CFunction*)(lua_state*)&amp;#123;">
+<meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua调用C函数与C调用Lua函数">
+<meta property="og:url" content="https://dongtshj.github.io/C/2020/04/Lua调用C函数与C调用Lua函数/index.html">
+<meta property="og:site_name" content="记录&amp;分享">
+<meta property="og:description" content="Lua调用C步骤：  将C的函数包装成Lua环境认可的函数 将包装好的函数注册到Lua环境中 像使用普通Lua函数那样使用注册函数好的C函数  包装C函数为了从Lua脚本中调用C函数，需要将被调用的C函数从普通的C函数包装成Lua_CFunction格式，并需要在函数中将返回值压入栈中，并返回返回值个数： 123456int (Lua_CFunction*)(lua_state*)&amp;#123;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-08T13:23:22.115Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lua调用C函数与C调用Lua函数">
+<meta name="twitter:description" content="Lua调用C步骤：  将C的函数包装成Lua环境认可的函数 将包装好的函数注册到Lua环境中 像使用普通Lua函数那样使用注册函数好的C函数  包装C函数为了从Lua脚本中调用C函数，需要将被调用的C函数从普通的C函数包装成Lua_CFunction格式，并需要在函数中将返回值压入栈中，并返回返回值个数： 123456int (Lua_CFunction*)(lua_state*)&amp;#123;">
+
+
+
+
+
+
+  <link rel="canonical" href="https://dongtshj.github.io/C/2020/04/Lua调用C函数与C调用Lua函数/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Lua调用C函数与C调用Lua函数 | 记录&分享</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-135514886-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-135514886-1');
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记录&分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">包含游戏开发、编程语言、计算机网络技术等相关知识点的技术博客</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+
+    
+
+    <a href="/" rel="section">首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+
+    
+
+    <a href="/categories/" rel="section">分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+
+    
+
+    <a href="/archives/" rel="section">归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+
+    
+
+    <a href="/about/" rel="section">关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2020/04/Lua调用C函数与C调用Lua函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Lua调用C函数与C调用Lua函数
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Lua调用C"><a href="#Lua调用C" class="headerlink" title="Lua调用C"></a>Lua调用C</h3><p>步骤：</p>
+<ul>
+<li>将C的函数包装成Lua环境认可的函数</li>
+<li>将包装好的函数注册到Lua环境中</li>
+<li>像使用普通Lua函数那样使用注册函数好的C函数</li>
+</ul>
+<h4 id="包装C函数"><a href="#包装C函数" class="headerlink" title="包装C函数"></a>包装C函数</h4><p>为了从Lua脚本中调用C函数，需要将被调用的C函数从普通的C函数包装成Lua_CFunction格式，并需要在函数中将返回值压入栈中，并返回返回值个数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int (Lua_CFunction*)(lua_state*)</span><br><span class="line">&#123;</span><br><span class="line">    // c code        // 实现逻辑功能</span><br><span class="line">    // lua_push code // 需要将返回值压入堆栈</span><br><span class="line">    return n;        // n为具体的返回值个数，告诉解释器，函数向堆栈压入几个返回值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int add(int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">    return a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>包装成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int add(lua_state*L)</span><br><span class="line">&#123;</span><br><span class="line">    int a = lua_tonumber(-1);</span><br><span class="line">    int b = lua_tonumber(-2);</span><br><span class="line">    int sum = a+b;</span><br><span class="line">    lua_pushnumber(L,sum);</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="注册C函数到Lua环境"><a href="#注册C函数到Lua环境" class="headerlink" title="注册C函数到Lua环境"></a>注册C函数到Lua环境</h4><p>将函数压栈，然后给函数设置一个在Lua中调用的名称,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lua_register(L,n,f);    // 参数n为Lua注册的函数名，f为对应的c函数名</span><br></pre></td></tr></table></figure></p>
+<p>lua_register是一个宏，对应两个函数:lua_pushfunction(L,f)和lua_setglobal(L,n)，将函数存放在一个全局table中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lua_register(L,&quot;Add2Number&quot;,add);//将c函数add注册到全局table[Add2Number]中</span><br></pre></td></tr></table></figure></p>
+<h4 id="调用注册好的C函数"><a href="#调用注册好的C函数" class="headerlink" title="调用注册好的C函数"></a>调用注册好的C函数</h4><p>像使用普通函数一样使用注册函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Add2Number(1,2);</span><br></pre></td></tr></table></figure></p>
+<h3 id="C调用Lua"><a href="#C调用Lua" class="headerlink" title="C调用Lua"></a>C调用Lua</h3><p>C++可以获取Lua中的值，可以调用Lua函数，还可以修改Lua文件</p>
+<h4 id="C获取Lua值"><a href="#C获取Lua值" class="headerlink" title="C获取Lua值"></a>C获取Lua值</h4><ul>
+<li>使用lua_getglocal来获取值，然后将其压栈</li>
+<li>使用C API lua_toXXX将栈中元素取出转成相应的C类型的值</li>
+</ul>
+<p>如果Lua值为table类型的话，通过lua_getfield和lua_setfield获取和修改表中元素的值</p>
+<h4 id="C调用Lua函数"><a href="#C调用Lua函数" class="headerlink" title="C调用Lua函数"></a>C调用Lua函数</h4><ul>
+<li>使用lua_getglobal来获取函数，然后将其压入栈；</li>
+<li>如果这个函数有参数的话，就需要依次将函数的参数也压入栈；</li>
+<li>这些准备工作都准备就绪以后，就调用lua_pcall开始调用函数了，调用完成以后，会将返回值压入栈中；</li>
+<li>最后取返回值，调用完毕。</li>
+</ul>
+<h4 id="一个简单的示例"><a href="#一个简单的示例" class="headerlink" title="一个简单的示例"></a>一个简单的示例</h4><p>test.lua<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name = &quot;xchen&quot;</span><br><span class="line">version = 1</span><br><span class="line">me = &#123; name = &quot;xchen&quot;, gender = &quot;female&quot;&#125;</span><br><span class="line">function add (a,b)</span><br><span class="line">    return a+b</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<p>main.cpp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;lua.hpp&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//显示栈内情况</span><br><span class="line">static void stackDump(lua_State* L);</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    //创建一个state</span><br><span class="line">    lua_State *L = luaL_newstate();</span><br><span class="line">    luaL_openlibs(L);</span><br><span class="line"></span><br><span class="line">    //读lua文件</span><br><span class="line">    int fret = luaL_dofile(L,&quot;luac.lua&quot;);</span><br><span class="line">    if(fret)</span><br><span class="line">    &#123;</span><br><span class="line">        std::cout&lt;&lt;&quot;read lua file error!&quot;&lt;&lt;std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //读取变量</span><br><span class="line">    lua_getglobal(L,&quot;name&quot;);   //string to be indexed</span><br><span class="line">    std::cout&lt;&lt;&quot;name = &quot;&lt;&lt;lua_tostring(L,-1)&lt;&lt;std::endl;</span><br><span class="line"></span><br><span class="line">    //读取数字</span><br><span class="line">    lua_getglobal(L,&quot;version&quot;); //number to be indexed</span><br><span class="line">    std::cout&lt;&lt;&quot;version = &quot;&lt;&lt;lua_tonumber(L,-1)&lt;&lt;std::endl;</span><br><span class="line"></span><br><span class="line">    //读取表</span><br><span class="line">    lua_getglobal(L, &quot;me&quot;);  //table to be indexed</span><br><span class="line">    if(!lua_istable(L,-1))</span><br><span class="line">    &#123;</span><br><span class="line">        std::cout&lt;&lt;&quot;error:it is not a table&quot;&lt;&lt;std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    //取表中元素</span><br><span class="line">    lua_getfield(L, -1 ,&quot;name&quot;);</span><br><span class="line">    std::cout&lt;&lt;&quot;student name = &quot;&lt;&lt;lua_tostring(L,-1)&lt;&lt;std::endl;</span><br><span class="line">    lua_getfield(L,-2,&quot;gender&quot;);</span><br><span class="line">    std::cout&lt;&lt;&quot;student gender = &quot;&lt;&lt;lua_tostring(L,-1)&lt;&lt;std::endl;</span><br><span class="line"></span><br><span class="line">    //修改表中元素</span><br><span class="line">    lua_pushstring(L, &quot;007&quot;);</span><br><span class="line">    lua_setfield(L,-4, &quot;name&quot;);</span><br><span class="line">    lua_getfield(L, -3 ,&quot;name&quot;);</span><br><span class="line">    std::cout&lt;&lt;&quot;student newName = &quot;&lt;&lt;lua_tostring(L,-1)&lt;&lt;std::endl;</span><br><span class="line"></span><br><span class="line">    //取函数</span><br><span class="line">    lua_getglobal(L,&quot;add&quot;);</span><br><span class="line">    lua_pushnumber(L,15);</span><br><span class="line">    lua_pushnumber(L,5);</span><br><span class="line">    lua_pcall(L,2,1,0);//2-参数格式，1-返回值个数，调用函数，函数执行完，会将返回值压入栈中</span><br><span class="line">    std::cout&lt;&lt;&quot;5 + 15 = &quot;&lt;&lt;lua_tonumber(L,-1)&lt;&lt;std::endl;</span><br><span class="line"></span><br><span class="line">    //查看栈</span><br><span class="line">    stackDump(L);</span><br><span class="line"></span><br><span class="line">    //关闭state</span><br><span class="line">    lua_close(L);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void stackDump(lua_State* L) &#123;</span><br><span class="line">    cout &lt;&lt; &quot;\nbegin dump lua stack&quot; &lt;&lt; endl;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int top = lua_gettop(L);</span><br><span class="line">    for (i = 1; i &lt;= top; ++i) &#123;</span><br><span class="line">        int t = lua_type(L, i);</span><br><span class="line">        switch (t) &#123;</span><br><span class="line">            case LUA_TSTRING: &#123;</span><br><span class="line">                printf(&quot;&apos;%s&apos; &quot;, lua_tostring(L, i));</span><br><span class="line">            &#125;</span><br><span class="line">                break;</span><br><span class="line">            case LUA_TBOOLEAN: &#123;</span><br><span class="line">                printf(lua_toboolean(L, i) ? &quot;true &quot; : &quot;false &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">                break;</span><br><span class="line">            case LUA_TNUMBER: &#123;</span><br><span class="line">                printf(&quot;%g &quot;, lua_tonumber(L, i));</span><br><span class="line">            &#125;</span><br><span class="line">                break;</span><br><span class="line">            default: &#123;</span><br><span class="line">                printf(&quot;%s &quot;, lua_typename(L, t));</span><br><span class="line">            &#125;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; &quot;\nend dump lua stack&quot; &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/C/2020/04/STL中的map与hash_map/" rel="next" title="STL中的map与hash_map">
+                <i class="fa fa-chevron-left"></i> STL中的map与hash_map
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/算法/2020/04/MD5消息摘要算法/" rel="prev" title="MD5消息摘要算法">
+                MD5消息摘要算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; 
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+</body>
+</html>

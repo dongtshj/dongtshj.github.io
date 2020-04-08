@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next mist" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4711868256207230",
+    enable_page_level_ads: true
+  });
+</script>
+
+  <meta name="description" content="崩溃堆栈的几个来源 真机上APP崩溃时，操作系统收集到的1234567890   libsystem_kernel.dylib        	0x00000001a24b70f4 0x1a249f000 + 985481   libsystem_kernel.dylib        	0x00000001a24b65a0 0x1a249f000 + 956482   CoreFoundatio">
+<meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分析IOS上APP的崩溃堆栈">
+<meta property="og:url" content="https://dongtshj.github.io/IOS/2019/07/分析IOS上APP的崩溃堆栈/index.html">
+<meta property="og:site_name" content="记录&amp;分享">
+<meta property="og:description" content="崩溃堆栈的几个来源 真机上APP崩溃时，操作系统收集到的1234567890   libsystem_kernel.dylib        	0x00000001a24b70f4 0x1a249f000 + 985481   libsystem_kernel.dylib        	0x00000001a24b65a0 0x1a249f000 + 956482   CoreFoundatio">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-08T13:42:16.856Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分析IOS上APP的崩溃堆栈">
+<meta name="twitter:description" content="崩溃堆栈的几个来源 真机上APP崩溃时，操作系统收集到的1234567890   libsystem_kernel.dylib        	0x00000001a24b70f4 0x1a249f000 + 985481   libsystem_kernel.dylib        	0x00000001a24b65a0 0x1a249f000 + 956482   CoreFoundatio">
+
+
+
+
+
+
+  <link rel="canonical" href="https://dongtshj.github.io/IOS/2019/07/分析IOS上APP的崩溃堆栈/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>分析IOS上APP的崩溃堆栈 | 记录&分享</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-135514886-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-135514886-1');
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记录&分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">包含游戏开发、编程语言、计算机网络技术等相关知识点的技术博客</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+
+    
+
+    <a href="/" rel="section">首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+
+    
+
+    <a href="/categories/" rel="section">分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+
+    
+
+    <a href="/archives/" rel="section">归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+
+    
+
+    <a href="/about/" rel="section">关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/IOS/2019/07/分析IOS上APP的崩溃堆栈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">分析IOS上APP的崩溃堆栈
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="崩溃堆栈的几个来源"><a href="#崩溃堆栈的几个来源" class="headerlink" title="崩溃堆栈的几个来源"></a>崩溃堆栈的几个来源</h3><hr>
+<h4 id="真机上APP崩溃时，操作系统收集到的"><a href="#真机上APP崩溃时，操作系统收集到的" class="headerlink" title="真机上APP崩溃时，操作系统收集到的"></a>真机上APP崩溃时，操作系统收集到的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">0   libsystem_kernel.dylib        	0x00000001a24b70f4 0x1a249f000 + 98548</span><br><span class="line">1   libsystem_kernel.dylib        	0x00000001a24b65a0 0x1a249f000 + 95648</span><br><span class="line">2   CoreFoundation                	0x00000001a28b6a10 0x1a280d000 + 694800</span><br><span class="line">3   CoreFoundation                	0x00000001a28b1920 0x1a280d000 + 674080</span><br><span class="line">4   CoreFoundation                	0x00000001a28b10b0 0x1a280d000 + 671920</span><br><span class="line">5   GraphicsServices              	0x00000001a4ab179c 0x1a4aa7000 + 42908</span><br><span class="line">6   UIKitCore                     	0x00000001cf0e0978 0x1ce824000 + 9161080</span><br><span class="line">7   SimpleGame iOS                	0x00000001046d1340 0x1045ec000 + 938816</span><br><span class="line">8   libdyld.dylib                 	0x00000001a23768e0 0x1a2375000 + 6368</span><br></pre></td></tr></table></figure>
+<p>上面是IOS操作系统记录的原始崩溃堆栈信息，此时还未经由符号表<strong>符号化</strong>。看到的都是十六进制的内存地址，如果想要找到崩溃的地方对应于<strong>哪个文件、哪个函数、哪一行</strong>，就需要<strong>符号化</strong>才行</p>
+<p><em>分析堆栈格式：</em></p>
+<ul>
+<li>第一列：栈帧</li>
+<li>第二列：二进制的应用程序名或者库名</li>
+<li>第三列：被调用的函数的地址</li>
+<li>第四列：是以<strong>基址+偏移量</strong>的形式表示的，前半部分指向某个源文件，后半部分指向这个源文件的某一行。</li>
+</ul>
+<h4 id="bugly上收集的"><a href="#bugly上收集的" class="headerlink" title="bugly上收集的"></a>bugly上收集的</h4><p>下面是bugly收集的原始堆栈信息，同样未经未<strong>符号化</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">0 SimpleGame iOS	0x00000001050ae238 __cxa_throw + 8825280</span><br><span class="line">1 SimpleGame iOS	0x0000000105095e34 __cxa_throw + 8725948</span><br><span class="line">2 CoreFoundation	0x0000000181dbcc3c 0x0000000181ce5000 + 883772</span><br><span class="line">3 CoreFoundation	0x0000000181dbc1b8 0x0000000181ce5000 + 881080</span><br><span class="line">4 CoreFoundation	0x0000000181dbbf14 0x0000000181ce5000 + 880404</span><br><span class="line">5 CoreFoundation	0x0000000181e3984c 0x0000000181ce5000 + 1394764</span><br><span class="line">6 CoreFoundation	0x0000000181cf2f38 _CFXNotificationPost + 384</span><br><span class="line">7 Foundation	        0x0000000182763bbc 0x000000018275d000 + 27580</span><br><span class="line">8 UIKit	                0x000000018bbfe8a4 0x000000018b9f0000 + 2156708</span><br><span class="line">9 UIKit	                0x000000018c5f854c 0x000000018b9f0000 + 12617036</span><br><span class="line">10 UIKit	        0x000000018bbf7df4 0x000000018b9f0000 + 2129396</span><br><span class="line">11 UIKit	        0x000000018c5f8230 0x000000018b9f0000 + 12616240</span><br><span class="line">12 UIKit	        0x000000018ba31730 0x000000018b9f0000 + 268080</span><br><span class="line">13 UIKit	        0x000000018ba310b8 0x000000018b9f0000 + 266424</span><br><span class="line">14 UIKit	        0x000000018bb1afcc 0x000000018b9f0000 + 1224652</span><br><span class="line">15 QuartzCore	        0x0000000185fc1504 0x0000000185e8f000 + 1254660</span><br><span class="line">16 libdispatch.dylib	0x000000018171ca60 0x000000018171b000 + 6752</span><br><span class="line">17 libdispatch.dylib	0x000000018175dd80 0x000000018171b000 + 273792</span><br><span class="line">18 CoreFoundation	0x0000000181dd3070 0x0000000181ce5000 + 974960</span><br><span class="line">19 CoreFoundation	0x0000000181dd0bc8 0x0000000181ce5000 + 965576</span><br><span class="line">20 CoreFoundation	0x0000000181cf0da8 CFRunLoopRunSpecific + 552</span><br><span class="line">21 GraphicsServices	0x0000000183cd5020 GSEventRunModal + 100</span><br><span class="line">22 UIKit	        0x000000018bd0d758 UIApplicationMain + 236</span><br><span class="line">23 SimpleGame iOS	0x00000001048f960c __cxa_throw + 744852</span><br><span class="line">24 libdyld.dylib	0x0000000181781fc0 0x0000000181781000 + 4032</span><br></pre></td></tr></table></figure>
+<p>下面是上面的原始堆栈信息经过<strong>符号化</strong>后的样子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">0 SimpleGame iOS	cocos2d::GLView::getScaleX() const</span><br><span class="line">1 SimpleGame iOS	-[CCEAGLView onUIKeyboardNotification:] + 656</span><br><span class="line">2 CoreFoundation	___CFNOTIFICATIONCENTER_IS_CALLING_OUT_TO_AN_OBSERVER__ + 20</span><br><span class="line">3 CoreFoundation	__CFXRegistrationPost + 428</span><br><span class="line">4 CoreFoundation	____CFXNotificationPost_block_invoke + 216</span><br><span class="line">5 CoreFoundation	-[_CFXNotificationRegistrar find:object:observer:enumerator:] + 1408</span><br><span class="line">6 CoreFoundation	_CFXNotificationPost + 384</span><br><span class="line">7 Foundation	        -[NSNotificationCenter postNotificationName:object:userInfo:] + 68</span><br><span class="line">8 UIKit	                -[UIInputWindowController postEndNotifications:withInfo:] + 1628</span><br><span class="line">9 UIKit	                ___77-[UIInputWindowController moveFromPlacement:toPlacement:starting:completion:]_block_invoke.1099 + 100</span><br><span class="line">10 UIKit	        -[UIInputWindowController performWithSafeTransitionFrames:] + 220</span><br><span class="line">11 UIKit	        ___77-[UIInputWindowController moveFromPlacement:toPlacement:starting:completion:]_block_invoke.1090 + 928</span><br><span class="line">12 UIKit	        -[UIViewAnimationBlockDelegate _didEndBlockAnimation:finished:context:] + 760</span><br><span class="line">13 UIKit	        -[UIViewAnimationState sendDelegateAnimationDidStop:finished:] + 312</span><br><span class="line">14 UIKit	        -[UIViewAnimationState animationDidStop:finished:] + 296</span><br><span class="line">15 QuartzCore	        CA::Layer::run_animation_callbacks(void*) + 284</span><br><span class="line">16 libdispatch.dylib	__dispatch_client_callout + 16</span><br><span class="line">17 libdispatch.dylib	__dispatch_main_queue_callback_4CF$VARIANT$armv81 + 964</span><br><span class="line">18 CoreFoundation	___CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__ + 12</span><br><span class="line">19 CoreFoundation	___CFRunLoopRun + 2272</span><br><span class="line">20 CoreFoundation	CFRunLoopRunSpecific + 552</span><br><span class="line">21 GraphicsServices	GSEventRunModal + 100</span><br><span class="line">22 UIKit	        UIApplicationMain + 236</span><br><span class="line">23 SimpleGame iOS	main (main.m:6)</span><br><span class="line">24 libdyld.dylib	_start + 4</span><br></pre></td></tr></table></figure>
+<h4 id="一些列外情况"><a href="#一些列外情况" class="headerlink" title="一些列外情况"></a>一些列外情况</h4><p>下面这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">0 SimpleGame iOS	0x0000000103469820 __cxa_throw + 6463400</span><br><span class="line">1 SimpleGame iOS	0x00000001034697b8 __cxa_throw + 6463296</span><br><span class="line">2 SimpleGame iOS	0x00000001033e6898 __cxa_throw + 5926944</span><br><span class="line">3 SimpleGame iOS	0x0000000103427c1c __cxa_throw + 6194084</span><br><span class="line">4 SimpleGame iOS	0x00000001033e6c6c __cxa_throw + 5927924</span><br><span class="line">5 SimpleGame iOS	0x00000001033e62bc __cxa_throw + 5925444</span><br><span class="line">6 SimpleGame iOS	0x00000001033e6f40 __cxa_throw + 5928648</span><br><span class="line">7 SimpleGame iOS	0x000000010344eb38 __cxa_throw + 6353600</span><br><span class="line">8 SimpleGame iOS	0x00000001033b97c8 __cxa_throw + 5742416</span><br><span class="line">9 SimpleGame iOS	0x00000001033b98c0 __cxa_throw + 5742664</span><br><span class="line">10 SimpleGame iOS	0x0000000103382ef8 __cxa_throw + 5518976</span><br><span class="line">11 SimpleGame iOS	0x00000001034fb724 __cxa_throw + 7061164</span><br><span class="line">12 SimpleGame iOS	0x00000001034fa994 __cxa_throw + 7057692</span><br><span class="line">13 SimpleGame iOS	0x00000001034fdbd0 __cxa_throw + 7070552</span><br><span class="line">14 SimpleGame iOS	0x00000001034fd924 __cxa_throw + 7069868</span><br><span class="line">15 SimpleGame iOS	0x000000010355e300 __cxa_throw + 7465608</span><br><span class="line">16 SimpleGame iOS	0x0000000103581a0c __cxa_throw + 7610772</span><br><span class="line">17 SimpleGame iOS	0x0000000103583478 __cxa_throw + 7617536</span><br><span class="line">18 QuartzCore	        0x00000001fcf18f90 0x00000001fcf08000 + 69520</span><br><span class="line">19 QuartzCore	        0x00000001fcfe2b10 0x00000001fcf08000 + 895760</span><br><span class="line">20 CoreFoundation	0x00000001f8afca8c 0x00000001f8a79000 + 539276</span><br><span class="line">21 CoreFoundation	0x00000001f8b23690 0x00000001f8a79000 + 698000</span><br><span class="line">22 CoreFoundation	0x00000001f8b22ddc 0x00000001f8a79000 + 695772</span><br><span class="line">23 CoreFoundation	0x00000001f8b1dc00 0x00000001f8a79000 + 674816</span><br><span class="line">24 CoreFoundation	0x00000001f8b1d0b0 CFRunLoopRunSpecific + 436</span><br><span class="line">25 GraphicsServices	0x00000001fad1d79c GSEventRunModal + 104</span><br><span class="line">26 UIKitCore	        0x0000000225389978 UIApplicationMain + 212</span><br><span class="line">27 SimpleGame iOS	0x0000000102ef560c __cxa_throw + 744852</span><br><span class="line">28 libdyld.dylib	0x00000001f85e28e0 0x00000001f85e1000 + 6368</span><br></pre></td></tr></table></figure></p>
+<p>符号化后，变成这样了：只有部分栈帧被符号化成有用的信息，但还有一部分和符号化之前的形式差不多！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">0 SimpleGame iOS	__cxa_throw + 6463400</span><br><span class="line">1 SimpleGame iOS	__cxa_throw + 6463296</span><br><span class="line">2 SimpleGame iOS	__cxa_throw + 5926944</span><br><span class="line">3 SimpleGame iOS	__cxa_throw + 6194084</span><br><span class="line">4 SimpleGame iOS	__cxa_throw + 5927924</span><br><span class="line">5 SimpleGame iOS	__cxa_throw + 5925444</span><br><span class="line">6 SimpleGame iOS	__cxa_throw + 5928648</span><br><span class="line">7 SimpleGame iOS	__cxa_throw + 6353600</span><br><span class="line">8 SimpleGame iOS	__cxa_throw + 5742416</span><br><span class="line">9 SimpleGame iOS	__cxa_throw + 5742664</span><br><span class="line">10 SimpleGame iOS	__cxa_throw + 5518976</span><br><span class="line">11 SimpleGame iOS	__cxa_throw + 7061164</span><br><span class="line">12 SimpleGame iOS	__cxa_throw + 7057692</span><br><span class="line">13 SimpleGame iOS	__cxa_throw + 7070552</span><br><span class="line">14 SimpleGame iOS	__cxa_throw + 7069868</span><br><span class="line">15 SimpleGame iOS	__cxa_throw + 7465608</span><br><span class="line">16 SimpleGame iOS	__cxa_throw + 7610772</span><br><span class="line">17 SimpleGame iOS	__cxa_throw + 7617536</span><br><span class="line">18 QuartzCore		CA::Display::DisplayLink::dispatch_items(unsigned long long, unsigned long long, unsigned long long) + 636</span><br><span class="line">19 QuartzCore		display_timer_callback(__CFMachPort*, void*, long, void*) + 272</span><br><span class="line">20 CoreFoundation	___CFMachPortPerform + 188</span><br><span class="line">21 CoreFoundation	___CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE1_PERFORM_FUNCTION__ + 56</span><br><span class="line">22 CoreFoundation	___CFRunLoopDoSource1 + 440</span><br><span class="line">23 CoreFoundation	___CFRunLoopRun + 2096</span><br><span class="line">24 CoreFoundation	CFRunLoopRunSpecific + 436</span><br><span class="line">25 GraphicsServices	GSEventRunModal + 104</span><br><span class="line">26 UIKitCore		UIApplicationMain + 212</span><br><span class="line">27 SimpleGame iOS	__cxa_throw + 744852</span><br><span class="line">28 libdyld.dylib	_start + 4</span><br></pre></td></tr></table></figure></p>
+<h3 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h3><hr>
+<ul>
+<li>符号化后的堆栈信息依然带有<code>+ number</code>的形式，不清楚是什么意思。(行数应该以<code>main (main.m:6)</code>的形式标识的)</li>
+<li>某些堆栈经过符号化后，和未符号化的差不多，依然看不到有用的信息</li>
+<li>内存不足或者用户强制杀死app，bugly也会搜集信息吗？</li>
+<li>暂时先这样吧，后面有空有机会再填这些坑。。。</li>
+</ul>
+<p><em>因为要查找线上IOS APP的一个崩溃问题，我查阅了很多相关的网页。发现一个现象：好多好多的中文内容其实都是雷同，甚至复制粘贴的。后来我又发现：尼玛，这些中文内容竟然还是翻译的同一篇英文文章！</em></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li>最初的英文文章：<a href="https://www.raywenderlich.com/2805-demystifying-ios-application-crash-logs" target="_blank" rel="noopener">https://www.raywenderlich.com/2805-demystifying-ios-application-crash-logs</a></li>
+<li>下面是雷同或者相似的中文文章：</li>
+<li><a href="https://www.jianshu.com/p/3261493e6d9e" target="_blank" rel="noopener">https://www.jianshu.com/p/3261493e6d9e</a></li>
+<li><a href="https://www.jianshu.com/p/12a2402b29c2" target="_blank" rel="noopener">https://www.jianshu.com/p/12a2402b29c2</a></li>
+<li><a href="https://blog.csdn.net/hello_hwc/article/details/80946318" target="_blank" rel="noopener">https://blog.csdn.net/hello_hwc/article/details/80946318</a></li>
+<li><a href="https://www.jianshu.com/p/104c362189d8" target="_blank" rel="noopener">https://www.jianshu.com/p/104c362189d8</a></li>
+<li><a href="https://www.jianshu.com/p/5efbb02ca6c3" target="_blank" rel="noopener">https://www.jianshu.com/p/5efbb02ca6c3</a></li>
+<li><a href="https://blog.csdn.net/jasonblog/article/details/19031517" target="_blank" rel="noopener">https://blog.csdn.net/jasonblog/article/details/19031517</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1070400" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1070400</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/IOS/2019/07/获取IOS真机日志/" rel="next" title="获取IOS真机日志">
+                <i class="fa fa-chevron-left"></i> 获取IOS真机日志
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/其他/2019/07/功夫/" rel="prev" title="《功夫》">
+                《功夫》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; 
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+</body>
+</html>

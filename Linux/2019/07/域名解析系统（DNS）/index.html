@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next mist" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4711868256207230",
+    enable_page_level_ads: true
+  });
+</script>
+
+  <meta name="description" content="摘要  周末才做的一个网站，现在趁热打铁，把一些相关的知识点都记录下来 网站搭建好后，别人想要访问你这个网站，那肯定是要用到域名的，这时就需要给网站一个好记的域名 域名和网站服务器IP的关系，就好像一个人的名字和身份证号码一样，就是为了方便记忆。只不过域名不会重复，但是人的名字是经常重复的  记录类型  A记录（IPv4主机记录）：将域名映射到一个IPv4的地址上 CNAME记录（别名记录）：将某">
+<meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="域名解析系统（DNS）">
+<meta property="og:url" content="https://dongtshj.github.io/Linux/2019/07/域名解析系统（DNS）/index.html">
+<meta property="og:site_name" content="记录&amp;分享">
+<meta property="og:description" content="摘要  周末才做的一个网站，现在趁热打铁，把一些相关的知识点都记录下来 网站搭建好后，别人想要访问你这个网站，那肯定是要用到域名的，这时就需要给网站一个好记的域名 域名和网站服务器IP的关系，就好像一个人的名字和身份证号码一样，就是为了方便记忆。只不过域名不会重复，但是人的名字是经常重复的  记录类型  A记录（IPv4主机记录）：将域名映射到一个IPv4的地址上 CNAME记录（别名记录）：将某">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-08T13:42:16.856Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="域名解析系统（DNS）">
+<meta name="twitter:description" content="摘要  周末才做的一个网站，现在趁热打铁，把一些相关的知识点都记录下来 网站搭建好后，别人想要访问你这个网站，那肯定是要用到域名的，这时就需要给网站一个好记的域名 域名和网站服务器IP的关系，就好像一个人的名字和身份证号码一样，就是为了方便记忆。只不过域名不会重复，但是人的名字是经常重复的  记录类型  A记录（IPv4主机记录）：将域名映射到一个IPv4的地址上 CNAME记录（别名记录）：将某">
+
+
+
+
+
+
+  <link rel="canonical" href="https://dongtshj.github.io/Linux/2019/07/域名解析系统（DNS）/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>域名解析系统（DNS） | 记录&分享</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-135514886-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-135514886-1');
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记录&分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">包含游戏开发、编程语言、计算机网络技术等相关知识点的技术博客</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+
+    
+
+    <a href="/" rel="section">首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+
+    
+
+    <a href="/categories/" rel="section">分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+
+    
+
+    <a href="/archives/" rel="section">归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+
+    
+
+    <a href="/about/" rel="section">关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Linux/2019/07/域名解析系统（DNS）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">域名解析系统（DNS）
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><hr>
+<ul>
+<li>周末才做的一个网站，现在趁热打铁，把一些相关的知识点都记录下来</li>
+<li>网站搭建好后，别人想要访问你这个网站，那肯定是要用到域名的，这时就需要给网站一个好记的域名</li>
+<li>域名和网站服务器IP的关系，就好像一个人的名字和身份证号码一样，就是为了方便记忆。只不过域名不会重复，但是人的名字是经常重复的</li>
+</ul>
+<h3 id="记录类型"><a href="#记录类型" class="headerlink" title="记录类型"></a>记录类型</h3><hr>
+<ul>
+<li><strong>A记录（IPv4主机记录）</strong>：将域名映射到一个IPv4的地址上</li>
+<li><strong>CNAME记录（别名记录）</strong>：将某个别名指向到某个A记录上，这样就不需要再为某个新名字另外创建一条新的A记录</li>
+<li><strong>AAAA记录（IPv6主机记录）</strong>：将域名映射到一个IPv6的地址上</li>
+</ul>
+<p>记录类型还有很多其他类型，常用的其实也就上面3个里的前两个。</p>
+<h3 id="域名前缀"><a href="#域名前缀" class="headerlink" title="域名前缀"></a>域名前缀</h3><hr>
+<ul>
+<li><strong>www</strong>：解析后的域名为 <code>www.example.com</code></li>
+<li><strong>@</strong>：解析后的域名为 <code>example.com</code> ，不用加 <code>www</code> 前缀就能访问</li>
+<li><strong>*</strong>：泛解析，匹配其他所有域名 <code>*.example.com</code></li>
+<li><strong>mail</strong>：将域名解析为 <code>mail.example.com</code>，通常用于解析邮箱服务器</li>
+<li><strong>二级域名</strong>：<code>abc.example.com</code></li>
+<li><strong>手机网站</strong>：<code>m.example.com</code></li>
+<li><strong>显性URL</strong>：不支持泛解析（泛解析：将所有子域名解析到同一地址）</li>
+</ul>
+<h3 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h3><hr>
+<p>现在本网站通过添加<strong>CNAME记录</strong>，增加了一个新的域名：<code>dongshijin.com</code> 😄</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Linux/2019/07/搭建WordPress网站/" rel="next" title="搭建WordPress网站">
+                <i class="fa fa-chevron-left"></i> 搭建WordPress网站
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/IOS/2019/07/IOS打包生成的dSYM文件/" rel="prev" title="IOS打包生成的dSYM文件">
+                IOS打包生成的dSYM文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; 
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+</body>
+</html>

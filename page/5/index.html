@@ -102,17 +102,17 @@
   });
 </script>
 
-  <meta name="description" content="记录一位软件开发者在实践中学习到的知识">
-<meta name="keywords" content="游戏编程 软件工程 阅读 读书">
+  <meta name="description" content="记录一位软件开发者在实践中学习到的各种知识">
+<meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="记录&amp;分享">
 <meta property="og:url" content="https://dongtshj.github.io/page/5/index.html">
 <meta property="og:site_name" content="记录&amp;分享">
-<meta property="og:description" content="记录一位软件开发者在实践中学习到的知识">
+<meta property="og:description" content="记录一位软件开发者在实践中学习到的各种知识">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记录&amp;分享">
-<meta name="twitter:description" content="记录一位软件开发者在实践中学习到的知识">
+<meta name="twitter:description" content="记录一位软件开发者在实践中学习到的各种知识">
 
 
 
@@ -203,7 +203,7 @@
     </div>
     
       
-        <h1 class="site-subtitle" itemprop="description">dongtshj的技术博客</h1>
+        <h1 class="site-subtitle" itemprop="description">包含游戏开发、编程语言、计算机网络技术等相关知识点的技术博客</h1>
       
     
     
@@ -333,11 +333,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/使用VSCode调试C++代码/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/游戏开发/2019/05/心跳机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -353,7 +353,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/C/使用VSCode调试C++代码/" class="post-title-link" itemprop="url">使用VSCode调试C++代码</a>
+                <a href="/游戏开发/2019/05/心跳机制/" class="post-title-link" itemprop="url">心跳机制</a>
               
             
           </h2>
@@ -403,17 +403,26 @@
         
           
             <p>
-              相关配置
+              心跳（HeartBeat）
+在计算机领域中，有很多概念和机制的命名，都参考了现实生活中已有的事物或者概念，两者之间一般都具有共同或者相似的行为。
+例如：
 
-这里有一份模板：https://github.com/dongtshj/debugCpp
-c_cpp_properties.json：这个文件主要配置一些项目属性，include路径、定义的宏、编译器路径、C/C++版本等
-launch.json：配置启动参数，只不过C++的要比其它脚本
+容器
+树
+迭代器/游标
+父类、子类
+神经网络
+心跳
+
+为何需要心跳机制
+
+C/S架构的软件，采用长连接时，通常并不会一直都会有数据传输的。连接处
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/C/使用VSCode调试C++代码/#more" rel="contents">
+              <a class="btn" href="/游戏开发/2019/05/心跳机制/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -473,11 +482,11 @@ launch.json：配置启动参数，只不过C++的要比其它脚本
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Python/Python版本的XXTEA实现/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx/2019/05/cocos2dx-lua的报错/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -493,7 +502,844 @@ launch.json：配置启动参数，只不过C++的要比其它脚本
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/Python/Python版本的XXTEA实现/" class="post-title-link" itemprop="url">Python版本的XXTEA实现</a>
+                <a href="/cocos2dx/2019/05/cocos2dx-lua的报错/" class="post-title-link" itemprop="url">invalid arguments in function 'lua_cocos2dx_ui_Text_setString'</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              #1
+项目中的代码类似这样：
+text:setString(&quot;xxx&quot;)
+类似的报错：
+invalid arguments in function &#39;bind_func_name&#39;
+之前我一直以为是调用对象为 nil 的缘故，我就使劲的找啊找，我想这不可能啊，难道
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/cocos2dx/2019/05/cocos2dx-lua的报错/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/其他/2019/05/拿起，放下。/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/其他/2019/05/拿起，放下。/" class="post-title-link" itemprop="url">拿起，放下。</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              拿得起，放得下。知易行难。
+              
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/其他/2019/05/拿起，放下。/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/软件工程/2019/05/编程语言的分类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/软件工程/2019/05/编程语言的分类/" class="post-title-link" itemprop="url">编程语言的分类</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              
+本来打算写的，网上搜到一个2015就已经存在的文章了。
+知乎上的
+英文文章
+
+
+              
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/软件工程/2019/05/编程语言的分类/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Lua/2019/05/Lua官网提供的win平台zip包内容/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/Lua/2019/05/Lua官网提供的win平台zip包内容/" class="post-title-link" itemprop="url">Lua官网提供的win平台zip包内容</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              介绍
+
+lua53.dll：由lua源码生成的动态链接库
+lua53.exe：这个是lua的解释器。可以执行终端输入的lua语句，或者lua代码文件，或者经过luac53.exe输出的文件
+luac53.exe：这个是lua的编译器。lua虽然是脚本语言，解释执行。但它也可以拥有自己的编译器，lua
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/Lua/2019/05/Lua官网提供的win平台zip包内容/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/在类比中学习/2019/05/goto语句 VS 函数调用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/在类比中学习/2019/05/goto语句 VS 函数调用/" class="post-title-link" itemprop="url">goto语句 VS 函数调用</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              介绍
+函数调用操作再熟悉不过了，无论是过程式、函数式还是面向对象式的编程范式里，它随处可见。一般来说，调用一个函数需要一个函数调用操作符，大部分编程语言里它是一对小括号：()
+goto语句的话，虽然基本上用不到它，不过大家肯定也很熟悉。因为它经常被当作反面教材来告诫新手：不要在你的程序里使用goto
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/在类比中学习/2019/05/goto语句 VS 函数调用/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/2019/05/解决SVN树冲突/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/版本控制/2019/05/解决SVN树冲突/" class="post-title-link" itemprop="url">解决SVN树冲突</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              介绍
+原文在这里:SVN 树冲突解决详解，我只是个搬运工。
+SVN的冲突有两种类型：
+
+内容冲突：当两名(或更多)开发人员修改了同一个文件中相邻或相同的行时就会发生文件冲突。
+当一名开发人员移动、重命名、删除一个文件或文件夹，而另一名开发人员也对它们进行了移动、重命名、删除或者仅仅是修改，在更新时就
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/版本控制/2019/05/解决SVN树冲突/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Python/2019/05/Python版本的XXTEA实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/Python/2019/05/Python版本的XXTEA实现/" class="post-title-link" itemprop="url">Python版本的XXTEA实现</a>
               
             
           </h2>
@@ -553,7 +1399,7 @@ xxtea一种简单、执行快速的加密方式，通常很少的代码量就能
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/Python/Python版本的XXTEA实现/#more" rel="contents">
+              <a class="btn" href="/Python/2019/05/Python版本的XXTEA实现/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -613,11 +1459,11 @@ xxtea一种简单、执行快速的加密方式，通常很少的代码量就能
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Android/ADB常用命令/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/JavaScript/2019/05/使用VSCode调试JavaScript代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -633,7 +1479,7 @@ xxtea一种简单、执行快速的加密方式，通常很少的代码量就能
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/Android/ADB常用命令/" class="post-title-link" itemprop="url">ADB常用命令</a>
+                <a href="/JavaScript/2019/05/使用VSCode调试JavaScript代码/" class="post-title-link" itemprop="url">使用VSCode调试JavaScript代码</a>
               
             
           </h2>
@@ -683,21 +1529,16 @@ xxtea一种简单、执行快速的加密方式，通常很少的代码量就能
         
           
             <p>
-              pull / push
+              说明
 
-从模拟器或设备复制文件adb pull remote local
-将文件复制到模拟器或设备adb push local remote
-
-local 和 remote 指的是开发计算机（本地）和模拟器/设备实例（远程）上目标文件/目录的路径。
-发送 shell 命令
-
-可以选
+这里有现成的模块：https://github.com/dongtshj/debugJS
+想要执行、调试JavaScript代码，就需要JavaScript的解释器、调试器程序。这些都集成在了JavaScript引擎之中，而JavaScript引擎一般是集成在浏览器程序之中的，比如Googl
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/Android/ADB常用命令/#more" rel="contents">
+              <a class="btn" href="/JavaScript/2019/05/使用VSCode调试JavaScript代码/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -757,11 +1598,11 @@ local 和 remote 指的是开发计算机（本地）和模拟器/设备实例�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Lua/Lua的元表与元方法/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2019/05/使用VSCode调试C++代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -777,7 +1618,7 @@ local 和 remote 指的是开发计算机（本地）和模拟器/设备实例�
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/Lua/Lua的元表与元方法/" class="post-title-link" itemprop="url">Lua的元表与元方法</a>
+                <a href="/C/2019/05/使用VSCode调试C++代码/" class="post-title-link" itemprop="url">使用VSCode调试C++代码</a>
               
             
           </h2>
@@ -827,847 +1668,17 @@ local 和 remote 指的是开发计算机（本地）和模拟器/设备实例�
         
           
             <p>
-              元表（MetaTable）
+              相关配置
 
-Lua中的每个值都可以有一个元表，这个元表就是一个普通的Lua表（table）；元表中的键所关联的那些值被称为元方法，而这些键则对应着不同的事件名
-元表用于定义原始值在特定操作下的行为，有点像函数重写的效果一样。只是这里的原始函数就是个nil（根本就没有函数，或者说重写
+这里有一份模板：https://github.com/dongtshj/debugCpp
+c_cpp_properties.json：这个文件主要配置一些项目属性，include路径、定义的宏、编译器路径、C/C++版本等
+launch.json：配置启动参数，只不过C++的要比其它脚本
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/Lua/Lua的元表与元方法/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Lua/Lua中的Table常见操作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/Lua/Lua中的Table常见操作/" class="post-title-link" itemprop="url">Lua中的Table常见操作</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-Lua中的表即table，它是Lua提供的唯一一个复杂数据结构。
-Lua中的table可以用来表示数组或者关联数组等常见概念。
-Lua中的模块、包以及面向对象等概念也是靠table来实现的。
-
-初始化
-可以这样：local table = &#123;&#125;table[1] = &quot;
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Lua/Lua中的Table常见操作/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Lua/Lua遍历Table的几种方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/Lua/Lua遍历Table的几种方式/" class="post-title-link" itemprop="url">Lua遍历Table的几种方式</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              for语句 + #tab
-这种方式只适合遍历被当作单纯的数组使用时的table，并且没有自定义元素的索引# 先定义一个使用for语句 + #tab的遍历函数function Traversal(tab)     print(#tab .. |)    for i = 1, #tab do      
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Lua/Lua遍历Table的几种方式/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Lua/Lua中加载代码的方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/Lua/Lua中加载代码的方式/" class="post-title-link" itemprop="url">Lua中加载代码的方式</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              load (chunk [, chunkname [, mode [, env]]])
-加载一个代码块，参数chunk可以是字符串或者函数load(&quot;print(\&quot;dongtshj.github.io\&quot;)&quot;)&gt; function: 0109b970 
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Lua/Lua中加载代码的方式/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/Git常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/版本控制/Git常用命令/" class="post-title-link" itemprop="url">Git常用命令</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              生成ssh key
-我是为了用来访问github上的repo，带.pub的是公钥，不带后缀的使密钥。把公钥内容粘贴到github的账户设置里就可以访问远程repo了,如果本地机器已经有了公钥，注意会提示你是否执行覆盖操作，然后一路回车就行了。ssh-keygen -t rsa -C &quot;yo
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/版本控制/Git常用命令/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Android/使用logcat查看android系统日志/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/Android/使用logcat查看android系统日志/" class="post-title-link" itemprop="url">使用logcat查看android系统日志</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              对我这个做游戏开发的来说，在android平台上通常会遇到的棘手情况如下
-
-安卓游戏程序通常通过JNI技术调用游戏的C++代码，所以在eclipse或者android studio上根本没法断点调试
-可能会遇到开发环境下（win32）运行正常，但是打包后在android上跑时就会出现问题
-SDK相关
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Android/使用logcat查看android系统日志/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/OOP/软件固有的复杂性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/OOP/软件固有的复杂性/" class="post-title-link" itemprop="url">软件固有的复杂性</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              定义软件的复杂性工业级软件的特征是，单个开发者要理解其设计的所有方面非常困难，几乎是不可能的。武断地说，这些系统的复杂性超出了人类智能的范围。不幸的是，我们所说的这种复杂性似乎是所有大型软件系统的基本特征。从根本上来说，我们可以掌握这种复杂性，但不能消除这种复杂性。
-
-软件的复杂性是一个基本特征，而
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/OOP/软件固有的复杂性/#more" rel="contents">
+              <a class="btn" href="/C/2019/05/使用VSCode调试C++代码/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1716,7 +1727,7 @@ SDK相关
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1897,7 +1908,6 @@ SDK相关
 
   <!-- 点击特效 -->
 <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
-<script type="text/javascript" src="/js/src/anime.min.js"></script>
 <script type="text/javascript" src="/js/src/fireworks.js"></script>
 </body>
 </html>

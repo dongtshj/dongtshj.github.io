@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next mist" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4711868256207230",
+    enable_page_level_ads: true
+  });
+</script>
+
+  <meta name="description" content="module ‘xxx’ not found: no field package.preload[xxx] 完整一点的报错信息：123456789101112module &amp;apos;xxx&amp;apos; not found: no field package.preload[&amp;apos;xxx&amp;apos;] no file &amp;apos;./xxx.lua&amp;apos; no file &amp;apos;/">
+<meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分析Lua在bugly上的报错">
+<meta property="og:url" content="https://dongtshj.github.io/Lua/2020/01/分析Lua在bugly上的报错/index.html">
+<meta property="og:site_name" content="记录&amp;分享">
+<meta property="og:description" content="module ‘xxx’ not found: no field package.preload[xxx] 完整一点的报错信息：123456789101112module &amp;apos;xxx&amp;apos; not found: no field package.preload[&amp;apos;xxx&amp;apos;] no file &amp;apos;./xxx.lua&amp;apos; no file &amp;apos;/">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-08T05:37:50.944Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分析Lua在bugly上的报错">
+<meta name="twitter:description" content="module ‘xxx’ not found: no field package.preload[xxx] 完整一点的报错信息：123456789101112module &amp;apos;xxx&amp;apos; not found: no field package.preload[&amp;apos;xxx&amp;apos;] no file &amp;apos;./xxx.lua&amp;apos; no file &amp;apos;/">
+
+
+
+
+
+
+  <link rel="canonical" href="https://dongtshj.github.io/Lua/2020/01/分析Lua在bugly上的报错/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>分析Lua在bugly上的报错 | 记录&分享</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-135514886-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-135514886-1');
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记录&分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">包含游戏开发、编程语言、计算机网络技术等相关知识点的技术博客</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+
+    
+
+    <a href="/" rel="section">首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+
+    
+
+    <a href="/categories/" rel="section">分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+
+    
+
+    <a href="/archives/" rel="section">归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+
+    
+
+    <a href="/about/" rel="section">关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Lua/2020/01/分析Lua在bugly上的报错/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">分析Lua在bugly上的报错
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="module-‘xxx’-not-found-no-field-package-preload-xxx"><a href="#module-‘xxx’-not-found-no-field-package-preload-xxx" class="headerlink" title="module ‘xxx’ not found: no field package.preload[xxx]"></a>module ‘xxx’ not found: no field package.preload[xxx]</h3><hr>
+<p>完整一点的报错信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">module &apos;xxx&apos; not found: </span><br><span class="line">no field package.preload[&apos;xxx&apos;] </span><br><span class="line">no file &apos;./xxx.lua&apos; </span><br><span class="line">no file &apos;/usr/local/share/luajit-2.1.0-beta2/xxx.lua&apos; </span><br><span class="line">no file &apos;/usr/local/share/lua/5.1/xxx.lua&apos; </span><br><span class="line">no file &apos;/usr/local/share/lua/5.1/xxx/init.lua&apos; </span><br><span class="line">no file &apos;/data/user/0/xxx.lua&apos; </span><br><span class="line">no file &apos;/data/user/0/xxx.lua&apos; </span><br><span class="line">no file &apos;/data/user/0/xxx.lua&apos; </span><br><span class="line">no file &apos;./xxx.so&apos; </span><br><span class="line">no file &apos;/usr/local/lib/lua/5.1/xxx.so&apos; </span><br><span class="line">no file &apos;/usr/local...too long be cutted!</span><br></pre></td></tr></table></figure></p>
+<p>从字面意思来看，就是找不到名为xxx的lua模块。</p>
+<p>问题来了，为什么安装包里的某个文件会不翼而飞呢？</p>
+<p>是用户删掉了？还是包体不完整？</p>
+<p>我这里遇到的情况是这样的：</p>
+<p>这个名为xxx的lua文件，需要通过热更下载到用户的设备上。而热更新系统有一套方法来判断：</p>
+<ul>
+<li>哪些文件本地没有，因此需要从服务器上下载这个文件到用户设备上</li>
+<li>哪些文件本地和服务器上有差异，这个时候也需要重新下载这个文件替换本地的旧版本</li>
+</ul>
+<p>一般来说，热更系统需要维护一个列表文件，通过这个文件它就可以回答上面的两个问题。</p>
+<p>问题就出在这个列表文件上，列表文件是通过记录所有需要热更文件的md5码，来判定是否需要更新某个文件的。</p>
+<p>而我的安装包里的列表文件记录了xxx.lua已经是最新了的，它的md5码和服务器上的一模一样。但是实际上本地根本没有这个叫做xxx.lua的文件。</p>
+<p>根本上说，就是信息的元数据（热更系统维护的那个列表文件）和信息实体（xxx.lua文件），出现了差错，已经不一致了。</p>
+<p>数据的元数据已经不能准确的反映它所指代的数据实体了。</p>
+<p>才导致这样的错误。</p>
+<h3 id="定义的lua变量，无缘无故的就成nil值了，消失了。彷佛从来就没有过这个变量一样"><a href="#定义的lua变量，无缘无故的就成nil值了，消失了。彷佛从来就没有过这个变量一样" class="headerlink" title="定义的lua变量，无缘无故的就成nil值了，消失了。彷佛从来就没有过这个变量一样"></a>定义的lua变量，无缘无故的就成nil值了，消失了。彷佛从来就没有过这个变量一样</h3><hr>
+<p>出现这种情况的原因之一可能是：</p>
+<p>热更或者其它相关系统或者开发工具，根本没有检测到你添加代码所作的改动，所以根本就没通过热更把你的最新代码下载到用户的设备上。</p>
+<p>这个情况和我之前在C++开发环境下遇到过的有点类似。</p>
+<p>我在某个cpp文件添加了一些代码，编译后，从运行效果来看，就好像根本没有我新添加的代码一样。</p>
+<p>而且，编译时，发现visual studio输出窗口显示：没有检测到任何改动。。。</p>
+<p>一般这种情况下，打开你添加代码的那个文件，按回车键，添加几个空行保存后，重新编译运行或者打包热更就好了。</p>
+<h3 id="loop-or-previous-error-loading-module-‘xxx’"><a href="#loop-or-previous-error-loading-module-‘xxx’" class="headerlink" title="loop or previous error loading module ‘xxx’"></a>loop or previous error loading module ‘xxx’</h3><hr>
+<p>出现这个提示，有可能是以下两种情况造成的：</p>
+<ul>
+<li><h3 id="loop：两个模块，循环加载。"><a href="#loop：两个模块，循环加载。" class="headerlink" title="loop：两个模块，循环加载。"></a>loop：两个模块，循环加载。</h3></li>
+</ul>
+<p>例如有moduleA和moduleB</p>
+<p>moduleA.lua，这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">require(&quot;moduleB&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>moduleB.lua，又这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">require(&quot;moduleA&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><em>在C++里，可以使用class的前置声明，来解决两个头文件互相include而导致的问题</em></p>
+<ul>
+<li><h3 id="previous：调用未定义完的变量。在一个表的内部，某个变量调用了一个也是属于表内部的变量。在创建时整个表还压在栈中没完成创建，无法调用到。"><a href="#previous：调用未定义完的变量。在一个表的内部，某个变量调用了一个也是属于表内部的变量。在创建时整个表还压在栈中没完成创建，无法调用到。" class="headerlink" title="previous：调用未定义完的变量。在一个表的内部，某个变量调用了一个也是属于表内部的变量。在创建时整个表还压在栈中没完成创建，无法调用到。"></a>previous：调用未定义完的变量。在一个表的内部，某个变量调用了一个也是属于表内部的变量。在创建时整个表还压在栈中没完成创建，无法调用到。</h3></li>
+</ul>
+<h3 id="理论上不可能出现的空值"><a href="#理论上不可能出现的空值" class="headerlink" title="理论上不可能出现的空值"></a>理论上不可能出现的空值</h3><hr>
+<p>出现这种情况，有段时间我也是挺郁闷的。</p>
+<p>就我遇到的，有下面两种情况：</p>
+<ul>
+<li>调度器系统（scheduler system）搞的鬼：比如，让你的游戏进入场景后，立刻开启一个调度器，设定在若干秒后执行某段代码。正常情况没什么问题，但是，如果在调度器还没有开始执行，玩家就退出了这个场景。随后，调度器里的代码才被执行。这样就会导致大部分和场景生命周期相关的变量都是一个空值。包括那些看似如论如何都不可能为空的变量，比如场景本身。</li>
+<li>脚本出错，导致后续逻辑没有执行（包括初始化某些变量的逻辑）：脚本出错一般不会导致app闪退，然后这个时候玩家点击某个按钮，响应事件里的代码一旦使用到了那些因为脚本出错根本没有进行初始化的变量时，也会导致表面上看似无论如何都不可能为空值得变量。</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Python/2020/01/软件包管理系统：pip/" rel="next" title="软件包管理系统：pip">
+                <i class="fa fa-chevron-left"></i> 软件包管理系统：pip
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Linux/2020/02/禁止windows关机：远程连接时防止远端机器意外关机/" rel="prev" title="禁止windows关机：远程连接时防止远端机器意外关机">
+                禁止windows关机：远程连接时防止远端机器意外关机 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; 
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+</body>
+</html>

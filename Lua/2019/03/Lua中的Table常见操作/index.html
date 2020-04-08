@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next mist" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4711868256207230",
+    enable_page_level_ads: true
+  });
+</script>
+
+  <meta name="description" content="Lua中的表即table，它是Lua提供的唯一一个复杂数据结构。 Lua中的table可以用来表示数组或者关联数组等常见概念。 Lua中的模块、包以及面向对象等概念也是靠table来实现的。  初始化 可以这样：1234local table = &amp;#123;&amp;#125;table[1] = &amp;quot;A&amp;quot;table[2] = &amp;quot;B&amp;quot;table[3] = &amp;quo">
+<meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua中的Table常见操作">
+<meta property="og:url" content="https://dongtshj.github.io/Lua/2019/03/Lua中的Table常见操作/index.html">
+<meta property="og:site_name" content="记录&amp;分享">
+<meta property="og:description" content="Lua中的表即table，它是Lua提供的唯一一个复杂数据结构。 Lua中的table可以用来表示数组或者关联数组等常见概念。 Lua中的模块、包以及面向对象等概念也是靠table来实现的。  初始化 可以这样：1234local table = &amp;#123;&amp;#125;table[1] = &amp;quot;A&amp;quot;table[2] = &amp;quot;B&amp;quot;table[3] = &amp;quo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-08T13:42:16.821Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lua中的Table常见操作">
+<meta name="twitter:description" content="Lua中的表即table，它是Lua提供的唯一一个复杂数据结构。 Lua中的table可以用来表示数组或者关联数组等常见概念。 Lua中的模块、包以及面向对象等概念也是靠table来实现的。  初始化 可以这样：1234local table = &amp;#123;&amp;#125;table[1] = &amp;quot;A&amp;quot;table[2] = &amp;quot;B&amp;quot;table[3] = &amp;quo">
+
+
+
+
+
+
+  <link rel="canonical" href="https://dongtshj.github.io/Lua/2019/03/Lua中的Table常见操作/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Lua中的Table常见操作 | 记录&分享</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-135514886-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-135514886-1');
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记录&分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">包含游戏开发、编程语言、计算机网络技术等相关知识点的技术博客</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+
+    
+
+    <a href="/" rel="section">首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+
+    
+
+    <a href="/categories/" rel="section">分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+
+    
+
+    <a href="/archives/" rel="section">归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+
+    
+
+    <a href="/about/" rel="section">关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Lua/2019/03/Lua中的Table常见操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Lua中的Table常见操作
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>Lua中的表即table，它是Lua提供的唯一一个复杂数据结构。</li>
+<li>Lua中的table可以用来表示数组或者关联数组等常见概念。</li>
+<li>Lua中的模块、包以及面向对象等概念也是靠table来实现的。</li>
+</ul>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><hr>
+<p>可以这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local table = &#123;&#125;</span><br><span class="line">table[1] = &quot;A&quot;</span><br><span class="line">table[2] = &quot;B&quot;</span><br><span class="line">table[3] = &quot;C&quot;</span><br></pre></td></tr></table></figure></p>
+<p>也可以这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">local table = &#123;</span><br><span class="line">    [1] = &quot;A&quot;,</span><br><span class="line">    [2] = &quot;B&quot;,</span><br><span class="line">    [3] = &quot;C&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">local table = &#123;</span><br><span class="line">    &quot;A&quot;,</span><br><span class="line">    &quot;B&quot;,</span><br><span class="line">    &quot;C&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Table操作"><a href="#Table操作" class="headerlink" title="Table操作"></a>Table操作</h3><hr>
+<ul>
+<li><p><strong>table.insert(tab, [pos,] value)</strong><br>在tab的pos处插入value，并后移tab[pos],tab[pos + 1],…,tab[#tab]。默认插入到tab末尾,即pos的默认值为#tab + 1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local tab = &#123;1, 2, 3&#125;</span><br><span class="line">table,insert(tab, 7)</span><br><span class="line">print(tab[4])</span><br><span class="line">&gt; 7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>table.remove(tab [,pos])</strong><br>移除tab中pos位置上的元素，并返回移除的值。默认移除最后一个元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local tab = &#123;1, 2, 3, 7&#125;</span><br><span class="line">table.remove(tab)</span><br><span class="line"># 现在tab的内容：&#123;1, 2, 3&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>table.sort(tab [, comp])</strong><br>对tab进行排序，可自定义排序规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local tab = &#123;5, 2, 1, 7, 13&#125;</span><br><span class="line">local comp = function(l, r) return l &gt; r end</span><br><span class="line">table.sort(tab, comp)</span><br><span class="line"># 现在tab的内容：&#123;13, 7, 5, 2, 1&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>table.concat(tab [, sep [, i [, j]]])</strong><br>连接tab的各个元素，以sep分割各个元素,返回值为：<br><code>tab[i] .. sep .. tab[i + 1] ··· sep .. tab[j]</code><br>其中的各项参数默认值为：sep = “”, i = 1, j = #tab</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">local tab = &#123;&quot;A&quot;, &quot;B&quot;, &quot;C&quot;&#125;</span><br><span class="line">print(table.concat(tab, &quot;|&quot;))</span><br><span class="line">&gt; A|B|C</span><br><span class="line">print(table.concat(tab, &quot;&quot;))</span><br><span class="line">&gt; ABC</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>table.move(tab1, begin1, end1, begin2 [, tab2])</strong><br>将tab1中的元素移到tab2中，等同于下面这个多重赋值操作：<br><code>tab2[begin2], ··· = tab1[begin1], ··· , tab1[end1]</code><br>其中tab2的默认值为tab1。<em>其实感觉move这个函数名不够好，move给人的感觉是，拷贝后会把自己的给删除了；或者就是把自己的元素给别人了，自己不再拥有这些元素的控制权了。其实这里就是个单纯的拷贝操作</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">local tab1 = &#123;1, 2&#125;</span><br><span class="line">local tab2 = &#123;&#125;</span><br><span class="line">table.move(tab1, 1, 2, 1, tab2)</span><br><span class="line"># 现在tab1的内容：&#123;1, 2&#125;</span><br><span class="line"># 现在tab2的内容：&#123;1, 2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>table.pack(…)</strong><br>构建新的table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local tab = table.pack(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)</span><br><span class="line"># 现在表tab的内容：&#123;&quot;A&quot;, &quot;B&quot;, &quot;C&quot;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>table.unpack(tab [, i [, j]])</strong><br>返回table中的元素，i默认为1，j默认为#tab；等价于<br><code>return tab[i], tab[i + 1], ··· ,tab[j]</code></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Lua/2019/03/Lua遍历Table的几种方式/" rel="next" title="Lua遍历Table的几种方式">
+                <i class="fa fa-chevron-left"></i> Lua遍历Table的几种方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Lua/2019/03/Lua的元表与元方法/" rel="prev" title="Lua的元表与元方法">
+                Lua的元表与元方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; 
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 点击特效 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+<script type="text/javascript" src="/js/src/fireworks.js"></script>
+</body>
+</html>

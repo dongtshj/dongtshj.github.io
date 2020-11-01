@@ -333,6 +333,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Android/2019/07/安卓APP的安装目录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/Android/2019/07/安卓APP的安装目录/" class="post-title-link" itemprop="url">安卓APP的安装目录</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              原由
+在调试安卓APP涉及到缓存文件这块时，发现对APP文件的读写位置不太了解。就去网上查了查，然后总结（抄袭）一下吧（前人总结的确实已经够好了）。
+涉及到的目录如下
+
+system/app：系统自带的应用程序，无法删除
+data/app：用户程序安装的目录，有删除权限。安装时把apk文件复制到此目
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/Android/2019/07/安卓APP的安装目录/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Android/2019/07/“此应用专为旧版Android打造，因此可能无法正常运行。请尝试检查更新或与开发者联系”/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1540,144 +1681,6 @@ luac53.exe：这个是lua的编译器。lua虽然是脚本语言，解释执行�
           
             <div class="post-button text-center">
               <a class="btn" href="/软件工程/2019/05/编程语言的分类/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/在类比中学习/2019/05/goto语句 VS 函数调用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/在类比中学习/2019/05/goto语句 VS 函数调用/" class="post-title-link" itemprop="url">goto语句 VS 函数调用</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              介绍
-函数调用操作再熟悉不过了，无论是过程式、函数式还是面向对象式的编程范式里，它随处可见。一般来说，调用一个函数需要一个函数调用操作符，大部分编程语言里它是一对小括号：()
-goto语句的话，虽然基本上用不到它，不过大家肯定也很熟悉。因为它经常被当作反面教材来告诫新手：不要在你的程序里使用goto
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/在类比中学习/2019/05/goto语句 VS 函数调用/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

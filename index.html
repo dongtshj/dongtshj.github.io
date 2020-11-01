@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/游戏开发/2020/04/纹理格式与像素格式/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/2020/11/svn resolve/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -353,7 +353,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/游戏开发/2020/04/纹理格式与像素格式/" class="post-title-link" itemprop="url">纹理格式与像素格式</a>
+                <a href="/版本控制/2020/11/svn resolve/" class="post-title-link" itemprop="url">svn resolve</a>
               
             
           </h2>
@@ -403,16 +403,16 @@
         
           
             <p>
-              常见的纹理格式
-PNG-8：每个像素占用8个比特的存储空间，图片中用到的每种颜色都存储在一个长度为255的数组中，称之为调色盘，然后每个像素上存储对应颜色在调色盘的位置。因为颜色上限是255种，所以每个像素只需要8bits就可以表示对应的颜色信息。这种表示颜色的方式也被称之为索引色。
-
-PNG-24
+              svn resolve很好用的一个svn命令行工具,
+现在在Mac上开发，svn的GUI软件功能比较弱，发生冲突解决起来比较麻烦。
+最近发现，发生树冲突时，可以使用这个命令行工具来弥补GUI的不足。
+Mac上发生树冲突时，提交的列表里不显示任何冲突项，只有在更新时，会提示哪些目录出现树冲突，已跳过更
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/游戏开发/2020/04/纹理格式与像素格式/#more" rel="contents">
+              <a class="btn" href="/版本控制/2020/11/svn resolve/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -472,7 +472,7 @@ PNG-24
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/算法/2020/04/MD5消息摘要算法/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2020/04/STL中的map与hash_map/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -492,7 +492,7 @@ PNG-24
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/算法/2020/04/MD5消息摘要算法/" class="post-title-link" itemprop="url">MD5消息摘要算法</a>
+                <a href="/C/2020/04/STL中的map与hash_map/" class="post-title-link" itemprop="url">STL中的map与hash_map</a>
               
             
           </h2>
@@ -542,19 +542,15 @@ PNG-24
         
           
             <p>
-              维基百科给出的表述：
-一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。
-
-
-将数据（如一段文字）运算变为另一固定长度值，是散列算法的基础原理。
-
-一般128位的MD5散列被表示为32位十六进制数字。以下是一个43位长的仅AS
+              mapSTL的map底层是用红黑树存储的，查找时间复杂度是log(n)级别
+hash_mapSTL的hash_map底层是用hash表存储的，查询时间复杂度是常数级别
+什么时候用map，什么时候用hash_map?这个要看具体的应用，不一定常数级别的hash_map一定比log(n)级别的map要好
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/算法/2020/04/MD5消息摘要算法/#more" rel="contents">
+              <a class="btn" href="/C/2020/04/STL中的map与hash_map/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -756,7 +752,7 @@ PNG-24
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2020/04/STL中的map与hash_map/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/算法/2020/04/MD5消息摘要算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -776,7 +772,7 @@ PNG-24
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/C/2020/04/STL中的map与hash_map/" class="post-title-link" itemprop="url">STL中的map与hash_map</a>
+                <a href="/算法/2020/04/MD5消息摘要算法/" class="post-title-link" itemprop="url">MD5消息摘要算法</a>
               
             
           </h2>
@@ -826,15 +822,158 @@ PNG-24
         
           
             <p>
-              mapSTL的map底层是用红黑树存储的，查找时间复杂度是log(n)级别
-hash_mapSTL的hash_map底层是用hash表存储的，查询时间复杂度是常数级别
-什么时候用map，什么时候用hash_map?这个要看具体的应用，不一定常数级别的hash_map一定比log(n)级别的map要好
+              维基百科给出的表述：
+一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。
+
+
+将数据（如一段文字）运算变为另一固定长度值，是散列算法的基础原理。
+
+一般128位的MD5散列被表示为32位十六进制数字。以下是一个43位长的仅AS
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/C/2020/04/STL中的map与hash_map/#more" rel="contents">
+              <a class="btn" href="/算法/2020/04/MD5消息摘要算法/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/游戏开发/2020/04/纹理格式与像素格式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/游戏开发/2020/04/纹理格式与像素格式/" class="post-title-link" itemprop="url">纹理格式与像素格式</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              常见的纹理格式
+PNG-8：每个像素占用8个比特的存储空间，图片中用到的每种颜色都存储在一个长度为255的数组中，称之为调色盘，然后每个像素上存储对应颜色在调色盘的位置。因为颜色上限是255种，所以每个像素只需要8bits就可以表示对应的颜色信息。这种表示颜色的方式也被称之为索引色。
+
+PNG-24
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/游戏开发/2020/04/纹理格式与像素格式/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1528,145 +1667,6 @@ Could not find a version that satisfies the requirement
           
             <div class="post-button text-center">
               <a class="btn" href="/Python/2020/01/pip安装tensorflow遇到的一些问题/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Python/2020/01/一台电脑同时使用两个版本的python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/Python/2020/01/一台电脑同时使用两个版本的python/" class="post-title-link" itemprop="url">一台电脑同时使用两个版本的python</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              可以更改python解释器的文件名以区分两个不同版本的python，但最好不要这样做。
-官方推荐做法
-
-我们在安装Python3（&gt;=3.3）时，Python的安装包实际上在系统中安装了一个启动器py.exe，默认放置在文件夹C:\Windows\下面。这个启动器允许我们指定使用Python2
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Python/2020/01/一台电脑同时使用两个版本的python/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

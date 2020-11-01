@@ -102,24 +102,25 @@
   });
 </script>
 
-  <meta name="description" content="记录一位软件开发者在实践中学习到的各种知识">
+  <meta name="description" content="svn resolve很好用的一个svn命令行工具, 现在在Mac上开发，svn的GUI软件功能比较弱，发生冲突解决起来比较麻烦。 最近发现，发生树冲突时，可以使用这个命令行工具来弥补GUI的不足。 Mac上发生树冲突时，提交的列表里不显示任何冲突项，只有在更新时，会提示哪些目录出现树冲突，已跳过更新。而没有提供任何解决树冲突的途径。 在svn管理的文件目录下，执行这个命令后，会自动查找当前目录下">
 <meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="记录&amp;分享">
-<meta property="og:url" content="https://dongtshj.github.io/archives/2019/08/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="svn resolve">
+<meta property="og:url" content="https://dongtshj.github.io/版本控制/2020/11/svn resolve/index.html">
 <meta property="og:site_name" content="记录&amp;分享">
-<meta property="og:description" content="记录一位软件开发者在实践中学习到的各种知识">
+<meta property="og:description" content="svn resolve很好用的一个svn命令行工具, 现在在Mac上开发，svn的GUI软件功能比较弱，发生冲突解决起来比较麻烦。 最近发现，发生树冲突时，可以使用这个命令行工具来弥补GUI的不足。 Mac上发生树冲突时，提交的列表里不显示任何冲突项，只有在更新时，会提示哪些目录出现树冲突，已跳过更新。而没有提供任何解决树冲突的途径。 在svn管理的文件目录下，执行这个命令后，会自动查找当前目录下">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-11-01T08:33:05.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录&amp;分享">
-<meta name="twitter:description" content="记录一位软件开发者在实践中学习到的各种知识">
+<meta name="twitter:title" content="svn resolve">
+<meta name="twitter:description" content="svn resolve很好用的一个svn命令行工具, 现在在Mac上开发，svn的GUI软件功能比较弱，发生冲突解决起来比较麻烦。 最近发现，发生树冲突时，可以使用这个命令行工具来弥补GUI的不足。 Mac上发生树冲突时，提交的列表里不显示任何冲突项，只有在更新时，会提示哪些目录出现树冲突，已跳过更新。而没有提供任何解决树冲突的途径。 在svn管理的文件目录下，执行这个命令后，会自动查找当前目录下">
 
 
 
 
 
 
-  <link rel="canonical" href="https://dongtshj.github.io/archives/2019/08/">
+  <link rel="canonical" href="https://dongtshj.github.io/版本控制/2020/11/svn resolve/">
 
 
 
@@ -129,7 +130,7 @@
   };
 </script>
 
-  <title>归档 | 记录&分享</title>
+  <title>svn resolve | 记录&分享</title>
   
 
 
@@ -185,7 +186,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,7 +258,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -292,25 +293,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -335,112 +317,155 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-         
-          
-        不错! 目前共计 70 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2019">2019</h2>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/2020/11/svn resolve/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/cocos2dx/2019/08/使用cocos2dx-lua遇到的一些问题/" itemprop="url">
-            
-              <span itemprop="name">使用cocos2dx-lua遇到的一些问题</span>
-            
-          </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">svn resolve
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-29T00:00:00+08:00" content="2019-08-29">
-          08-29
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
 
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/其他/2019/08/时间过的真快啊/" itemprop="url">
-            
-              <span itemprop="name">时间过的真快啊！</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-28T00:00:00+08:00" content="2019-08-28">
-          08-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <h3 id="svn-resolve"><a href="#svn-resolve" class="headerlink" title="svn resolve"></a>svn resolve</h3><p>很好用的一个<code>svn</code>命令行工具,</p>
+<p>现在在<code>Mac</code>上开发，<code>svn</code>的<code>GUI</code>软件功能比较弱，发生冲突解决起来比较麻烦。</p>
+<p>最近发现，发生树冲突时，可以使用这个命令行工具来弥补<code>GUI</code>的不足。</p>
+<p><em><code>Mac</code>上发生树冲突时，提交的列表里不显示任何冲突项，只有在更新时，会提示哪些目录出现树冲突，已跳过更新。而没有提供任何解决树冲突的途径。</em></p>
+<p>在<code>svn</code>管理的文件目录下，执行这个命令后，会自动查找当前目录下所有的冲突，然后逐一解决。</p>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/C/2020/04/STL中的map与hash_map/" rel="next" title="STL中的map与hash_map">
+                <i class="fa fa-chevron-left"></i> STL中的map与hash_map
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -555,6 +580,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
 
   
 
@@ -565,6 +594,8 @@
 
   
 
+
+  
 
 
   

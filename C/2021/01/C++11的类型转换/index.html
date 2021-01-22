@@ -102,25 +102,25 @@
   });
 </script>
 
-  <meta name="description" content="其实很简单。 不要使用基于SSH协议的方式和github进行交互。 而是换成HTTPS的方式。 这样的话，就可以在每个项目的.git/config里，单独配置访问github的相关账号配置，缺点是可能会暴露你的github的明文密码。但是如果你不在.git/config里配置github账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。 这个时候项目的url应该配置成： http">
+  <meta name="description" content="Type b = (Type)a这个是 C 风格的强制类型转换，在现代 C++ 编程中，它已经是不被推荐，并且被视为不安全的操作。 C++11 中重新定义了四种新的类型转换操作符来替代旧的 C 风格的类型转换。 dynamic_cast首先说这个，是因为某些需要使用它的场合下，如果你一时图个方便，使用了旧的 C 风格的类型转换来代替它，那么可能会导致程序直接崩溃。 当你把一个基类指针转换成派生类指">
 <meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一台电脑如何同时使用两个github账号">
-<meta property="og:url" content="https://dongtshj.github.io/版本控制/2020/01/一台电脑如何同时使用两个github账号/index.html">
+<meta property="og:title" content="C++11的类型转换">
+<meta property="og:url" content="https://dongtshj.github.io/C/2021/01/C++11的类型转换/index.html">
 <meta property="og:site_name" content="记录&amp;分享">
-<meta property="og:description" content="其实很简单。 不要使用基于SSH协议的方式和github进行交互。 而是换成HTTPS的方式。 这样的话，就可以在每个项目的.git/config里，单独配置访问github的相关账号配置，缺点是可能会暴露你的github的明文密码。但是如果你不在.git/config里配置github账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。 这个时候项目的url应该配置成： http">
+<meta property="og:description" content="Type b = (Type)a这个是 C 风格的强制类型转换，在现代 C++ 编程中，它已经是不被推荐，并且被视为不安全的操作。 C++11 中重新定义了四种新的类型转换操作符来替代旧的 C 风格的类型转换。 dynamic_cast首先说这个，是因为某些需要使用它的场合下，如果你一时图个方便，使用了旧的 C 风格的类型转换来代替它，那么可能会导致程序直接崩溃。 当你把一个基类指针转换成派生类指">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-14T14:46:13.308Z">
+<meta property="og:updated_time" content="2021-01-22T15:56:37.825Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一台电脑如何同时使用两个github账号">
-<meta name="twitter:description" content="其实很简单。 不要使用基于SSH协议的方式和github进行交互。 而是换成HTTPS的方式。 这样的话，就可以在每个项目的.git/config里，单独配置访问github的相关账号配置，缺点是可能会暴露你的github的明文密码。但是如果你不在.git/config里配置github账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。 这个时候项目的url应该配置成： http">
+<meta name="twitter:title" content="C++11的类型转换">
+<meta name="twitter:description" content="Type b = (Type)a这个是 C 风格的强制类型转换，在现代 C++ 编程中，它已经是不被推荐，并且被视为不安全的操作。 C++11 中重新定义了四种新的类型转换操作符来替代旧的 C 风格的类型转换。 dynamic_cast首先说这个，是因为某些需要使用它的场合下，如果你一时图个方便，使用了旧的 C 风格的类型转换来代替它，那么可能会导致程序直接崩溃。 当你把一个基类指针转换成派生类指">
 
 
 
 
 
 
-  <link rel="canonical" href="https://dongtshj.github.io/版本控制/2020/01/一台电脑如何同时使用两个github账号/">
+  <link rel="canonical" href="https://dongtshj.github.io/C/2021/01/C++11的类型转换/">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>一台电脑如何同时使用两个github账号 | 记录&分享</title>
+  <title>C++11的类型转换 | 记录&分享</title>
   
 
 
@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/2020/01/一台电脑如何同时使用两个github账号/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2021/01/C++11的类型转换/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -350,7 +350,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">一台电脑如何同时使用两个github账号
+          <h2 class="post-title" itemprop="name headline">C++11的类型转换
 
               
             
@@ -398,21 +398,21 @@
       
 
       
-        <p>其实很简单。</p>
-<p>不要使用基于<code>SSH</code>协议的方式和<code>github</code>进行交互。</p>
-<p>而是换成<code>HTTPS</code>的方式。</p>
-<p>这样的话，就可以在每个项目的<code>.git/config</code>里，单独配置访问<code>github</code>的相关账号配置，缺点是可能会暴露你的<code>github</code>的明文密码。但是如果你不在<code>.git/config</code>里配置<code>github</code>账号的密码的话，也可以在每次提交的时候输入密码，只不过显示有点麻烦。</p>
-<p>这个时候项目的<code>url</code>应该配置成：</p>
-<p><code>https://YourGithubName:YourGithubPassword@github.com/YourGithubName/YourProjectName.git</code></p>
-<p>不想把你的<code>github</code>密码暴露出来的话把上面的<code>:YourGithubPassword</code>去掉就可以了，这个时候每次提交需要你手动输入密码。</p>
-<p>如何你采用了上面的建议的话，记得不要执行下面的<code>git</code>命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;John Doe&quot;</span><br><span class="line">git config --global user.email &quot;johndoe@example.com&quot;</span><br></pre></td></tr></table></figure>
-<p>如果你已经执行过了，那可以执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset user.name &quot;John Doe&quot;</span><br><span class="line">git config --global --unset user.email &quot;johndoe@example.com&quot;</span><br></pre></td></tr></table></figure>
-<p>来撤销上面的全局设置。</p>
-<p><code>SSH</code>的方式也许可以单独配置每个项目，但是我尝试过好几次，都失败了。</p>
-<p>各种权限错误、拒绝访问。</p>
-<p>感觉像是账号和项目都串门了。</p>
+        <h1 id="Type-b-Type-a"><a href="#Type-b-Type-a" class="headerlink" title="Type b = (Type)a"></a>Type b = (Type)a</h1><p>这个是 C 风格的强制类型转换，在现代 C++ 编程中，它已经是不被推荐，并且被视为不安全的操作。</p>
+<p>C++11 中重新定义了四种新的类型转换操作符来替代旧的 C 风格的类型转换。</p>
+<h1 id="dynamic-cast"><a href="#dynamic-cast" class="headerlink" title="dynamic_cast"></a>dynamic_cast</h1><p>首先说这个，是因为某些需要使用它的场合下，如果你一时图个方便，使用了旧的 C 风格的类型转换来代替它，那么可能会导致程序直接崩溃。</p>
+<p>当你把一个基类指针转换成派生类指针的时候，一但他们实际上并不存在继承关系。这个时候：</p>
+<p>1、如果你使用了 C 风格的类型转换，那么你是无法直接通过转换后的指针的值来判断，转换是否成功的（比如指针的值是否为 NULL ，因为不管转换是否成功，指针都会被赋予一个非空的值）。所以直到你对这个指针进行其它操作时才发现，程序崩溃了，这个时候才意识到，转换没有成功。</p>
+<p>2、如果你使用了 dynamic_cast ，那么结果就不一样了。一旦转换失败，dynamic_cast 会返回 NULL 。此时，你可以通过判断结果指针的值是否为 NULL ，再对其进行后续操作。</p>
+<p>所以当涉及到，具有继承关系的类的指针之间的转换时，使用它是最稳妥的方式。</p>
+<h1 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a>static_cast</h1><p>这个通常的使用场景就是 C++ 基本类型之间的转换，没什么好说的。</p>
+<h1 id="const-cast"><a href="#const-cast" class="headerlink" title="const_cast"></a>const_cast</h1><p>这个主要是用来移除变量的 const 或者 volatile 修饰符。</p>
+<h1 id="reinterpret-cast"><a href="#reinterpret-cast" class="headerlink" title="reinterpret_cast"></a>reinterpret_cast</h1><p>重新解释 二进制的值</p>
+<p>改变计算机对一个变量的解读方式</p>
+<p>就像这一过程：</p>
+<p>int a;</p>
+<p>float<em> b = (float</em>)a;</p>
+<p>二进制的值没有发生任何变化，但是计算机对其解读方式不一样了。</p>
 
       
     </div>
@@ -443,8 +443,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Linux/2020/01/vi中文乱码/" rel="next" title="vi中文乱码">
-                <i class="fa fa-chevron-left"></i> vi中文乱码
+              <a href="/版本控制/2020/11/svn resolve/" rel="next" title="svn resolve">
+                <i class="fa fa-chevron-left"></i> svn resolve
               </a>
             
           </div>
@@ -452,10 +452,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Python/2020/01/软件包管理系统：pip/" rel="prev" title="软件包管理系统：pip">
-                软件包管理系统：pip <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

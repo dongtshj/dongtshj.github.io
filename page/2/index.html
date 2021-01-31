@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2020/04/C、C++与Lua的交互/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/游戏开发/2020/04/纹理格式与像素格式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -353,7 +353,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/C/2020/04/C、C++与Lua的交互/" class="post-title-link" itemprop="url">C、C++与Lua的交互</a>
+                <a href="/游戏开发/2020/04/纹理格式与像素格式/" class="post-title-link" itemprop="url">纹理格式与像素格式</a>
               
             
           </h2>
@@ -403,14 +403,16 @@
         
           
             <p>
-              栈C/C++与Lua的交互通过栈来实现的，可以通过下面API来对栈进行操作：
-lua_toboolean()lua_tonumber()lua_tostring()lua_pushboolean()lua_pushinteger()lua_pushnumber()lua_pushstring()..
+              常见的纹理格式
+PNG-8：每个像素占用8个比特的存储空间，图片中用到的每种颜色都存储在一个长度为255的数组中，称之为调色盘，然后每个像素上存储对应颜色在调色盘的位置。因为颜色上限是255种，所以每个像素只需要8bits就可以表示对应的颜色信息。这种表示颜色的方式也被称之为索引色。
+
+PNG-24
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/C/2020/04/C、C++与Lua的交互/#more" rel="contents">
+              <a class="btn" href="/游戏开发/2020/04/纹理格式与像素格式/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -470,7 +472,7 @@ lua_toboolean()lua_tonumber()lua_tostring()lua_pushboolean()lua_pushinteger()lua
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/算法/2020/04/MD5消息摘要算法/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2020/04/Lua调用C函数与C调用Lua函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -490,7 +492,7 @@ lua_toboolean()lua_tonumber()lua_tostring()lua_pushboolean()lua_pushinteger()lua
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/算法/2020/04/MD5消息摘要算法/" class="post-title-link" itemprop="url">MD5消息摘要算法</a>
+                <a href="/C/2020/04/Lua调用C函数与C调用Lua函数/" class="post-title-link" itemprop="url">Lua调用C函数与C调用Lua函数</a>
               
             
           </h2>
@@ -540,19 +542,19 @@ lua_toboolean()lua_tonumber()lua_tostring()lua_pushboolean()lua_pushinteger()lua
         
           
             <p>
-              维基百科给出的表述：
-一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。
+              Lua调用C步骤：
 
+将C的函数包装成Lua环境认可的函数
+将包装好的函数注册到Lua环境中
+像使用普通Lua函数那样使用注册函数好的C函数
 
-将数据（如一段文字）运算变为另一固定长度值，是散列算法的基础原理。
-
-一般128位的MD5散列被表示为32位十六进制数字。以下是一个43位长的仅AS
+包装C函数为了从Lua脚本中调用C函数，需要将被调用的C函数从普通的C函数包装成Lua_CFunction格式，并需要在函数中将返回值压入栈中，并返回返回值
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/算法/2020/04/MD5消息摘要算法/#more" rel="contents">
+              <a class="btn" href="/C/2020/04/Lua调用C函数与C调用Lua函数/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -889,6 +891,144 @@ lua_toboolean()lua_tonumber()lua_tostring()lua_pushboolean()lua_pushinteger()lua
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Python/2020/01/pip安装tensorflow遇到的一些问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/Python/2020/01/pip安装tensorflow遇到的一些问题/" class="post-title-link" itemprop="url">pip安装tensorflow遇到的一些问题</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              Could not find a version that satisfies the requirement tensorflow
+使用python的pip安装tensorflow提示：
+Could not find a version that satisfies the requirement
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/Python/2020/01/pip安装tensorflow遇到的一些问题/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Python/2020/01/软件包管理系统：pip/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1110,144 +1250,6 @@ pip的其中一个主要特点就是其方便使用的命令行接口，这
           
             <div class="post-button text-center">
               <a class="btn" href="/Python/2020/01/一台电脑同时使用两个版本的python/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/Python/2020/01/pip安装tensorflow遇到的一些问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/Python/2020/01/pip安装tensorflow遇到的一些问题/" class="post-title-link" itemprop="url">pip安装tensorflow遇到的一些问题</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              Could not find a version that satisfies the requirement tensorflow
-使用python的pip安装tensorflow提示：
-Could not find a version that satisfies the requirement
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Python/2020/01/pip安装tensorflow遇到的一些问题/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

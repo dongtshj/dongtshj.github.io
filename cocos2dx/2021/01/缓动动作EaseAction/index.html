@@ -102,25 +102,25 @@
   });
 </script>
 
-  <meta name="description" content="生成ssh key 我是为了用来访问github上的repo，带.pub的是公钥，不带后缀的使密钥。把公钥内容粘贴到github的账户设置里就可以访问远程repo了,如果本地机器已经有了公钥，注意会提示你是否执行覆盖操作，然后一路回车就行了。ssh-keygen -t rsa -C &amp;quot;your_email@example.com&amp;quot; 新建分支  新建分支但不切换（依然停留在当前分">
+  <meta name="description" content="直接使用cocos2dx动作系统的 MoveTo、ScaleTo、SkewTo、FadeTo、RotateTo虽然也能完成基本的功能需求，但是这样匀速的变化过程，略显生硬。  要想让玩家看到舒服的变化过程，还需要对基本的动作添加一些额外的修饰。这里就要用到被 缓动函数 包裹修饰后的 缓动动作  你可以在这个网页的最下面找到cocos2dx支持的所有缓动动作的列表。">
 <meta name="keywords" content="游戏开发 编程语言 软件工程 信息技术 计算机 互联网 技术博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用命令">
-<meta property="og:url" content="https://dongtshj.github.io/版本控制/2019/03/Git常用命令/index.html">
+<meta property="og:title" content="缓动动作EaseAction">
+<meta property="og:url" content="https://dongtshj.github.io/cocos2dx/2021/01/缓动动作EaseAction/index.html">
 <meta property="og:site_name" content="记录&amp;分享">
-<meta property="og:description" content="生成ssh key 我是为了用来访问github上的repo，带.pub的是公钥，不带后缀的使密钥。把公钥内容粘贴到github的账户设置里就可以访问远程repo了,如果本地机器已经有了公钥，注意会提示你是否执行覆盖操作，然后一路回车就行了。ssh-keygen -t rsa -C &amp;quot;your_email@example.com&amp;quot; 新建分支  新建分支但不切换（依然停留在当前分">
+<meta property="og:description" content="直接使用cocos2dx动作系统的 MoveTo、ScaleTo、SkewTo、FadeTo、RotateTo虽然也能完成基本的功能需求，但是这样匀速的变化过程，略显生硬。  要想让玩家看到舒服的变化过程，还需要对基本的动作添加一些额外的修饰。这里就要用到被 缓动函数 包裹修饰后的 缓动动作  你可以在这个网页的最下面找到cocos2dx支持的所有缓动动作的列表。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-08T13:42:16.801Z">
+<meta property="og:updated_time" content="2021-01-31T08:29:57.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常用命令">
-<meta name="twitter:description" content="生成ssh key 我是为了用来访问github上的repo，带.pub的是公钥，不带后缀的使密钥。把公钥内容粘贴到github的账户设置里就可以访问远程repo了,如果本地机器已经有了公钥，注意会提示你是否执行覆盖操作，然后一路回车就行了。ssh-keygen -t rsa -C &amp;quot;your_email@example.com&amp;quot; 新建分支  新建分支但不切换（依然停留在当前分">
+<meta name="twitter:title" content="缓动动作EaseAction">
+<meta name="twitter:description" content="直接使用cocos2dx动作系统的 MoveTo、ScaleTo、SkewTo、FadeTo、RotateTo虽然也能完成基本的功能需求，但是这样匀速的变化过程，略显生硬。  要想让玩家看到舒服的变化过程，还需要对基本的动作添加一些额外的修饰。这里就要用到被 缓动函数 包裹修饰后的 缓动动作  你可以在这个网页的最下面找到cocos2dx支持的所有缓动动作的列表。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://dongtshj.github.io/版本控制/2019/03/Git常用命令/">
+  <link rel="canonical" href="https://dongtshj.github.io/cocos2dx/2021/01/缓动动作EaseAction/">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>Git常用命令 | 记录&分享</title>
+  <title>缓动动作EaseAction | 记录&分享</title>
   
 
 
@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/版本控制/2019/03/Git常用命令/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx/2021/01/缓动动作EaseAction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -350,7 +350,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Git常用命令
+          <h2 class="post-title" itemprop="name headline">缓动动作EaseAction
 
               
             
@@ -398,13 +398,13 @@
       
 
       
-        <h3 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h3><hr>
-<p>我是为了用来访问github上的repo，带.pub的是公钥，不带后缀的使密钥。把公钥内容粘贴到github的账户设置里就可以访问远程repo了,如果本地机器已经有了公钥，注意会提示你是否执行覆盖操作，然后一路回车就行了。<br><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</code></p>
-<h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><hr>
-<ul>
-<li>新建分支但不切换（依然停留在当前分支）<br><code>git branch new_branch_name</code></li>
-<li>切换分支<br><code>git checkout new_branch_name</code></li>
-<li>新建分支并切换<br><code>git checkout -b new_branch_name</code></li>
+        <ul>
+<li><p>直接使用cocos2dx动作系统的 MoveTo、ScaleTo、SkewTo、FadeTo、RotateTo虽然也能完成基本的功能需求，但是这样匀速的变化过程，略显生硬。</p>
+</li>
+<li><p>要想让玩家看到<em>舒服</em>的变化过程，还需要对基本的动作添加一些额外的修饰。<br>这里就要用到被 <strong>缓动函数</strong> 包裹修饰后的 <strong>缓动动作</strong></p>
+</li>
+<li><p>你可以在<a href="https://docs.cocos.com/creator/manual/zh/scripting/actions.html" target="_blank" rel="noopener">这个网页的最下面</a>找到cocos2dx支持的所有缓动动作的列表。</p>
+</li>
 </ul>
 
       
@@ -436,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Android/2019/03/使用logcat查看android系统日志/" rel="next" title="使用logcat查看android系统日志">
-                <i class="fa fa-chevron-left"></i> 使用logcat查看android系统日志
+              <a href="/C/2021/01/指针的引用/" rel="next" title="指针的引用">
+                <i class="fa fa-chevron-left"></i> 指针的引用
               </a>
             
           </div>
@@ -445,10 +445,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Lua/2019/03/Lua中加载代码的方式/" rel="prev" title="Lua中加载代码的方式">
-                Lua中加载代码的方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

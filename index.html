@@ -333,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx/2021/01/GlobalZorder/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx/2021/01/缓动动作EaseAction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -353,7 +353,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/cocos2dx/2021/01/GlobalZorder/" class="post-title-link" itemprop="url">GlobalZorder</a>
+                <a href="/cocos2dx/2021/01/缓动动作EaseAction/" class="post-title-link" itemprop="url">缓动动作EaseAction</a>
               
             
           </h2>
@@ -403,14 +403,18 @@
         
           
             <p>
-              GlobalZorder如果碰到这样的奇怪需求，比如想让父节点显示在子节点的上面，或者其它不按常理的层级关系显示的时候。你就可以通过 setGlobalZorder 设置一个节点的 GlobalZorder 属性。
-所有节点默认的 GlobalZorder 的值为0，所以你只要将一个节点的 Glob
+              
+直接使用cocos2dx动作系统的 MoveTo、ScaleTo、SkewTo、FadeTo、RotateTo虽然也能完成基本的功能需求，但是这样匀速的变化过程，略显生硬。
+
+要想让玩家看到舒服的变化过程，还需要对基本的动作添加一些额外的修饰。这里就要用到被 缓动函数 包裹修饰后的 缓动动作
+
+你
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/cocos2dx/2021/01/GlobalZorder/#more" rel="contents">
+              <a class="btn" href="/cocos2dx/2021/01/缓动动作EaseAction/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -607,6 +611,281 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx/2021/01/cocos2dx骨骼动画从指定帧数播放/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/cocos2dx/2021/01/cocos2dx骨骼动画从指定帧数播放/" class="post-title-link" itemprop="url">cocos2dx骨骼动画从指定帧数播放</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              SkeletonAnimation使用这个类来实现骨骼动画的播放时，有时我们需要动画不是从第1帧开始播放，而是在指定帧数播放。这个时候就需要用到下面这个接口：
+virtual void update (float deltaTime);
+我在工作中用到的场景，仅仅是想把两个相同的骨骼动画错开播放，所
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/cocos2dx/2021/01/cocos2dx骨骼动画从指定帧数播放/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx/2021/01/GlobalZorder/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongtshj">
+      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录&分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/cocos2dx/2021/01/GlobalZorder/" class="post-title-link" itemprop="url">GlobalZorder</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              GlobalZorder如果碰到这样的奇怪需求，比如想让父节点显示在子节点的上面，或者其它不按常理的层级关系显示的时候。你就可以通过 setGlobalZorder 设置一个节点的 GlobalZorder 属性。
+所有节点默认的 GlobalZorder 的值为0，所以你只要将一个节点的 Glob
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/cocos2dx/2021/01/GlobalZorder/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2021/01/mutable/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -687,144 +966,6 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/C/2021/01/mutable/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/cocos2dx/2021/01/cocos2dx骨骼动画从指定帧数播放/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/cocos2dx/2021/01/cocos2dx骨骼动画从指定帧数播放/" class="post-title-link" itemprop="url">cocos2dx骨骼动画从指定帧数播放</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              SkeletonAnimation使用这个类来实现骨骼动画的播放时，有时我们需要动画不是从第1帧开始播放，而是在指定帧数播放。这个时候就需要用到下面这个接口：
-virtual void update (float deltaTime);
-我在工作中用到的场景，仅仅是想把两个相同的骨骼动画错开播放，所
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/cocos2dx/2021/01/cocos2dx骨骼动画从指定帧数播放/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1161,7 +1302,7 @@ Mac上发生树冲突时，提交的列表里不显示任何冲突项，只有�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/游戏开发/2020/04/纹理格式与像素格式/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2020/04/STL中的map与hash_map/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -1181,7 +1322,7 @@ Mac上发生树冲突时，提交的列表里不显示任何冲突项，只有�
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/游戏开发/2020/04/纹理格式与像素格式/" class="post-title-link" itemprop="url">纹理格式与像素格式</a>
+                <a href="/C/2020/04/STL中的map与hash_map/" class="post-title-link" itemprop="url">STL中的map与hash_map</a>
               
             
           </h2>
@@ -1231,16 +1372,15 @@ Mac上发生树冲突时，提交的列表里不显示任何冲突项，只有�
         
           
             <p>
-              常见的纹理格式
-PNG-8：每个像素占用8个比特的存储空间，图片中用到的每种颜色都存储在一个长度为255的数组中，称之为调色盘，然后每个像素上存储对应颜色在调色盘的位置。因为颜色上限是255种，所以每个像素只需要8bits就可以表示对应的颜色信息。这种表示颜色的方式也被称之为索引色。
-
-PNG-24
+              mapSTL的map底层是用红黑树存储的，查找时间复杂度是log(n)级别
+hash_mapSTL的hash_map底层是用hash表存储的，查询时间复杂度是常数级别
+什么时候用map，什么时候用hash_map?这个要看具体的应用，不一定常数级别的hash_map一定比log(n)级别的map要好
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/游戏开发/2020/04/纹理格式与像素格式/#more" rel="contents">
+              <a class="btn" href="/C/2020/04/STL中的map与hash_map/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1442,7 +1582,7 @@ PNG-24
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2020/04/STL中的map与hash_map/">
+    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/游戏开发/2020/04/纹理格式与像素格式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongtshj">
@@ -1462,7 +1602,7 @@ PNG-24
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/C/2020/04/STL中的map与hash_map/" class="post-title-link" itemprop="url">STL中的map与hash_map</a>
+                <a href="/游戏开发/2020/04/纹理格式与像素格式/" class="post-title-link" itemprop="url">纹理格式与像素格式</a>
               
             
           </h2>
@@ -1512,152 +1652,16 @@ PNG-24
         
           
             <p>
-              mapSTL的map底层是用红黑树存储的，查找时间复杂度是log(n)级别
-hash_mapSTL的hash_map底层是用hash表存储的，查询时间复杂度是常数级别
-什么时候用map，什么时候用hash_map?这个要看具体的应用，不一定常数级别的hash_map一定比log(n)级别的map要好
+              常见的纹理格式
+PNG-8：每个像素占用8个比特的存储空间，图片中用到的每种颜色都存储在一个长度为255的数组中，称之为调色盘，然后每个像素上存储对应颜色在调色盘的位置。因为颜色上限是255种，所以每个像素只需要8bits就可以表示对应的颜色信息。这种表示颜色的方式也被称之为索引色。
+
+PNG-24
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/C/2020/04/STL中的map与hash_map/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dongtshj.github.io/C/2020/04/C、C++与Lua的交互/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongtshj">
-      <meta itemprop="description" content="记录一位软件开发者在实践中学习到的各种知识">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记录&分享">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/C/2020/04/C、C++与Lua的交互/" class="post-title-link" itemprop="url">C、C++与Lua的交互</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              栈C/C++与Lua的交互通过栈来实现的，可以通过下面API来对栈进行操作：
-lua_toboolean()lua_tonumber()lua_tostring()lua_pushboolean()lua_pushinteger()lua_pushnumber()lua_pushstring()..
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/C/2020/04/C、C++与Lua的交互/#more" rel="contents">
+              <a class="btn" href="/游戏开发/2020/04/纹理格式与像素格式/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
